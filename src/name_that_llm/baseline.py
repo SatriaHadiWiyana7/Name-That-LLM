@@ -7,15 +7,17 @@ from .labels import LABELS
 
 
 def make_baseline(cfg: dict) -> Pipeline:
-    word = dict(cfg["word"])
-    char = dict(cfg["char"])
-    word["ngram_range"] = tuple(word["ngram_range"])
-    char["ngram_range"] = tuple(char["ngram_range"])
+    groups = cfg.get("feature_groups", ["word", "char"])
+    if groups not in (["word"], ["char"], ["word", "char"]):
+        raise ValueError("feature_groups must be ['word'], ['char'], or ['word', 'char']")
     # TfidfVectorizer fitted INSIDE each fold, never globally.
-    features = FeatureUnion([
-        ("word", TfidfVectorizer(**word)),
-        ("char", TfidfVectorizer(**char)),
-    ])
+    # Keep FeatureUnion even for one block: deleting a block adds no new scaling.
+    transformers = []
+    for name in groups:
+        settings = dict(cfg[name])
+        settings["ngram_range"] = tuple(settings["ngram_range"])
+        transformers.append((name, TfidfVectorizer(**settings)))
+    features = FeatureUnion(transformers)
     classifier = dict(cfg["classifier"])
     classifier.setdefault("random_state", cfg["random_seed"])
     clf = LogisticRegression(**classifier)

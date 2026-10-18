@@ -1,0 +1,23 @@
+{
+  "utc_created": "2026-10-18T14:33:54.586153+00:00",
+  "argv": [
+    "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 24.43932489999861,
+  "stdout": "........................................................................ [ 80%]\n..................                                                       [100%]\n90 passed in 23.89s\n",
+  "stderr": "",
+  "test_file_sha256": {
+    "tests\\test_ablation_guards.py": "7e8d975a8dcf11aa062eab47bd63a565139d3a15e8d40963951d7bb1b21bca3a",
+    "tests\\test_analysis.py": "a57258a8a4317883d35609bd4bb3f3517e493174ee407995f818aab878c114d3",
+    "tests\\test_baseline_runtime.py": "5565d2a8afcf8a793706dd7150165b89b56643fea5fd6a1cec86a30e2bf12ad3",
+    "tests\\test_comparison.py": "37e282b0d4f92d3bed340e70ddf28fc3aa95f445980bcef34aebac3b6d51b36a",
+    "tests\\test_feature_ablation.py": "8a68c6bbb32b3f0753115561355a207b3c1f3ae733a07e8760bdb1a5dd992791",
+    "tests\\test_metrics.py": "aae65cdd5308735683c3c8bdefba63f7d9b580e1d7238ebe38bf0c249c713740",
+    "tests\\test_splits.py": "70bf5ebfb6a450e0ea152964b54c76996cb8e3ee4696fa116e09b27928049030",
+    "tests\\test_submission.py": "198a3077e2382c98969db133ba372c49e9f51b6229cfd5da59130abc9de5f20a"
+  }
+}

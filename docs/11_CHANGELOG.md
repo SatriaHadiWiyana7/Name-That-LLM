@@ -95,3 +95,17 @@ Append subsequent changes with: timestamp, hypothesis, command/config, OOF BA, c
 - README, dataset/hardware notes, historical-baseline follow-up, taskboard and
   docs/13 now link the measured local results. No score event was added for the
   unclarified 0.547 reference, and no rank claim was made.
+
+## 2026-10-18 — P2 audit, preregistration and implementation
+
+- Preserved previously uncommitted P0/P1 foundation in local commit f3d219e;
+  raw data, OOF/folds and model artifacts remain excluded from Git.
+- Audit confirms exact P0 dataset/fold hashes, label order, Python/dependencies,
+  thread settings and recomputed BA 0.31633855331841904. No package changes.
+- Preregistered two feature deletions plus one exact repeat per variant in
+  docs/14 and reports/p2_20261018_plan.json before implementation/training.
+- Added word-only/char-only selection with unchanged retained vectorizers and
+  classifier; guard rejects config/provenance/environment drift before fitting.
+  Added verified OOF comparison with 10000 paired prompt-cluster bootstrap draws.
+- Pretraining full suite: 90 passed in 23.89 s. Both new/updated CLI help paths
+  pass. No real P2 training has occurred at this entry; results follow separately.

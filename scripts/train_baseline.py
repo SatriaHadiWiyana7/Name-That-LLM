@@ -13,6 +13,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
+from name_that_llm.ablation import validate_controlled_ablation
 from name_that_llm.baseline import make_baseline, ordered_probabilities
 from name_that_llm.io import load_train, sha256_file
 from name_that_llm.labels import LABELS
@@ -33,7 +34,8 @@ REGISTER_FIELDS = [
 
 
 def write_json(path: Path, value: dict):
-    path.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    with path.open("x", encoding="utf-8") as stream:
+        stream.write(json.dumps(value, indent=2, allow_nan=False) + "\n")
 
 
 def parse_args():
@@ -47,6 +49,7 @@ def parse_args():
     parser.add_argument("--register", default="reports/experiments.csv")
     parser.add_argument("--environment-report", help="Optional local hardware audit JSON")
     parser.add_argument("--reference-metrics", help="Reference metrics; missing provenance means historical numerical difference only")
+    parser.add_argument("--reference-manifest", help="Require a controlled word-only/char-only ablation against this manifest")
     return parser.parse_args()
 
 
@@ -68,6 +71,8 @@ def main():
         "folds": reports / "baseline_fold_assignments.csv",
         "model": out / "model.joblib",
         "manifest": out / "manifest.json",
+        "report_manifest": reports / "manifest.json",
+        "config": reports / "config.json",
     }
     existing = [str(path) for path in paths.values() if path.exists()]
     if existing:
@@ -98,12 +103,24 @@ def main():
         mapping = train[["id", "prompt_id"]].copy()
         mapping["fold"] = fold_assignments(train, n_splits=n_splits)
     folds = validate_fold_mapping(train, mapping, n_splits)
+    dataset_hash = sha256_file(args.train)
+    ablation_validation = None
+    if args.reference_manifest:
+        ablation_validation = validate_controlled_ablation(
+            config=cfg, environment=environment, dataset_sha256=dataset_hash,
+            folds_path=args.folds, reference_manifest_path=args.reference_manifest,
+            reference_metrics_path=args.reference_metrics,
+        )
     reports.mkdir(parents=True, exist_ok=True)
     out.mkdir(parents=True, exist_ok=True)
+    # Retain the exact input bytes, including formatting, before fitting.
+    with paths["config"].open("xb") as stream:
+        stream.write(Path(args.config).read_bytes())
     # Persist the immutable row-to-fold plan BEFORE fitting anything.
     pd.DataFrame({"id": train.id, "prompt_id": train.prompt_id, "fold": folds}).to_csv(paths["folds"], index=False)
-    dataset_hash = sha256_file(args.train)
     fold_hash = sha256_file(paths["folds"])
+    if ablation_validation and fold_hash != sha256_file(args.folds):
+        raise ValueError("Controlled ablation persisted fold SHA256 differs from the P0 source")
     repo_root = Path(__file__).resolve().parents[1]
     source_paths = sorted(set(repo_root.joinpath("src").rglob("*.py")) | set(repo_root.joinpath("scripts").glob("*.py")))
     source_hashes = {str(path.relative_to(repo_root)).replace("\\", "/"): sha256_file(path) for path in source_paths}
@@ -113,6 +130,8 @@ def main():
     label_array = np.array(LABELS, dtype=object)
     oof = np.full((len(train), len(LABELS)), np.nan, dtype=np.float64)
     fold_metrics = []
+    feature_groups = list(cfg.get("feature_groups", ["word", "char"]))
+    model_kind = "tfidf_" + "_".join(feature_groups) + "_logreg"
 
     with ResourceMonitor() as run_monitor:
         cv_started = time.perf_counter()
@@ -120,6 +139,9 @@ def main():
             validation_rows = np.flatnonzero(folds == fold)
             training_rows = np.flatnonzero(folds != fold)
             model = make_baseline(cfg)
+            actual_groups = [name for name, _ in model.named_steps["features"].transformer_list]
+            if actual_groups != feature_groups:
+                raise ValueError("Constructed model feature groups differ from configuration")
             with ResourceMonitor() as fold_monitor:
                 fit_started = time.perf_counter()
                 model.fit([texts[index] for index in training_rows], targets[training_rows])
@@ -154,6 +176,8 @@ def main():
             "experiment_id": run_id,
             "model_id": run_id,
             "config_name": cfg["name"],
+            "feature_groups": feature_groups,
+            "model": model_kind,
             "random_seed": seed,
             "dataset_sha256": dataset_hash,
             "fold_assignments_sha256": fold_hash,
@@ -196,11 +220,13 @@ def main():
     write_json(paths["metrics"], overall)
     output_artifacts = {
         name: {"path": str(path.resolve()), "sha256": sha256_file(path), "bytes": path.stat().st_size}
-        for name, path in paths.items() if name != "manifest"
+        for name, path in paths.items() if name not in ("manifest", "report_manifest")
     }
     manifest = {
         "experiment_id": run_id,
         "model_id": run_id,
+        "model": model_kind,
+        "feature_groups": feature_groups,
         "utc_started": started_utc,
         "utc_created": datetime.now(timezone.utc).isoformat(),
         "dataset_sha256": dataset_hash,
@@ -229,13 +255,16 @@ def main():
     }
     if "reference_comparison" in overall:
         manifest["reference_comparison"] = overall["reference_comparison"]
+    if ablation_validation is not None:
+        manifest["controlled_ablation_validation"] = ablation_validation
     write_json(paths["manifest"], manifest)
+    write_json(paths["report_manifest"], manifest)
     comparison = overall.get("reference_comparison", {})
     comparable_delta = comparison.get("delta_balanced_accuracy")
     entry = {
         "experiment_id": run_id,
         "utc_date": manifest["utc_created"],
-        "model": "tfidf_word_char_logreg",
+        "model": model_kind,
         "split": f"groupkfold{n_splits}_oof",
         "seed": seed,
         "oof_balanced_accuracy": f"{overall['balanced_accuracy']:.12f}",

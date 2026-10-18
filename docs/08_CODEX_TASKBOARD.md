@@ -33,6 +33,11 @@ encoder-specific memory/tokenizer/offload preflight remain open; no transformer 
 
 ## P2 — Compare stronger classical models
 
+Controlled feature ablation is preregistered in docs/14. P0 hash/environment
+audit passed; implementation and 90 tests passed before training. Word-only and
+char-only will each use the P0 saved folds and one exact repeat. Stylometry-only
+will be assessed after the two main runs; no transformer in this phase.
+
 - [ ] word-only, char-only, combined, stylometry-only CV (same fixed splits).
 - [ ] Save OOF probability matrices/classes and confusion reports.
 - [ ] Ablate em dash/punctuation and word-length features.
