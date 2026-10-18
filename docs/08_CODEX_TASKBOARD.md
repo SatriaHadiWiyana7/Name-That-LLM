@@ -53,7 +53,21 @@ Word delta CI is negative; character delta CI includes zero. Retain combined P0.
 This requested Word/Character study meets that definition. The two remaining
 feature studies above are future scope. No transformer training performed.
 
-## P3 — Encoder CV
+## P3 — Preregistered stylometry-only experiment
+
+User-directed phase numbering supersedes the earlier encoder P3 heading.
+P0/P2 measurements and artifacts remain frozen. See docs/15 and the immutable
+reports/p3_20261018_plan.json plan snapshot, written before coding/training.
+
+- [x] Read P0/P2 evidence; audit six runs, data/folds/environment and integrity.
+- [x] Preregister 81 numeric features, fold-local scaler, classifier, two repeats,
+  10000 paired prompt-bootstrap draws and existing promotion criteria.
+- [ ] Implement and test extractor, isolation, guarded trainer/comparison.
+- [ ] Execute two fixed-config five-fold runs and verify reproducibility.
+- [ ] Report class/confusion/resource results; retain/promote using fixed gate.
+- [ ] Recommend P4 ModernBERT one-fold GPU benchmark; no transformer in P3.
+
+## P4 — Encoder benchmark and CV (future)
 
 - [ ] ModernBERT-base one-fold benchmark; compare with frozen embeddings.
 - [ ] DeBERTa-v3-base if resource/validation suggests.
@@ -61,7 +75,7 @@ feature studies above are future scope. No transformer training performed.
 
 **Done when:** measured OOF BA and ablations, checkpoint budgets, working inference loader.
 
-## P4 — Specialization & ensemble
+## P5 — Specialization & ensemble (future)
 
 - [ ] 18-class confusion analysis; same-family hard cases.
 - [ ] Prompt-contrastive/hierarchical trial if value supported.
@@ -69,7 +83,7 @@ feature studies above are future scope. No transformer training performed.
 
 **Done when:** improvements are stable, not only one leaderboard bump.
 
-## P5 — Competition notebook
+## P6 — Competition notebook (future)
 
 - [ ] Upload trained artifact(s) private to Kaggle.
 - [ ] Notebook infer on variable-length test, internet OFF, <= 9h.

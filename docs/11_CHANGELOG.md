@@ -142,3 +142,18 @@ Append subsequent changes with: timestamp, hypothesis, command/config, OOF BA, c
 - Verified private raw data, OOF/folds and model files remain ignored by Git.
   Final documentation and aggregate reports are prepared as a separate local
   results commit; no publication or leaderboard submission is performed.
+
+## 2026-10-18 — P3 audit and preregistration
+
+- Read AGENTS, taskboard, experiment log and complete docs13/docs14. Existing
+  full suite: 90 passed in 17.71s before implementation.
+- reports/p3_20261018_preflight.json verifies all six P0/P2 runs, data/artifact
+  hashes, GroupKFold equivalence and unchanged runtime; P0 BA remains exactly
+  0.31633855331841904. Free RAM 18.499 GiB and disk 172.848 GiB at audit.
+- Preregistered fixed 81-feature stylometry, training-fold StandardScaler and
+  logistic regression, two identical runs and 10000 paired prompt-cluster
+  draws in docs/15 and immutable reports/p3_20261018_plan.json. No P3 code or
+  training exists at this entry. No packages changed and no transformer planned.
+- Primary hypothesis: strictly positive recall delta in at least two of four
+  weak focus classes. Global promotion separately requires positive delta,
+  improvement on at least four folds and positive 95% delta interval.
