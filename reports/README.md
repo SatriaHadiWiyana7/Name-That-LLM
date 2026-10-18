@@ -12,3 +12,10 @@ and a manifest with hashes, commands, dependencies and measured resources.
 The top-level `baseline_metrics.json` remains the historical sandbox result.
 Recursive git-ignore rules protect nested OOF and fold mappings; aggregate
 reports remain local unless an authorized, rules-compliant release is requested.
+
+P2 controlled ablations are under `p2_20261018_{word,char}_{run1,run2}/`.
+Each includes exact config bytes, manifest, full metrics, private OOF/folds and
+a 10000-repeat paired prompt-bootstrap comparison to P0. Consolidated tables
+and full confusion matrices are in `p2_20261018_summary/`; repeat verification
+is recorded in `p2_20261018_{word,char}_reproduction_check.json`.
+Confusion-matrix CSVs contain only aggregate class counts, not row-level data.

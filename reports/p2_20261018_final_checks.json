@@ -1,0 +1,81 @@
+{
+  "utc_created": "2026-10-18T14:46:29.730568+00:00",
+  "status": "passed",
+  "implementation_commit": "83548ac",
+  "tests": "90 passed in 23.89s; source/tests frozen since pretraining check",
+  "runs": {
+    "p2_20261018_word_run1": {
+      "manifest_sha256": "3cf249526820d1023c82c04b3948e759554f0fa243191bb894371e57e589e1e7",
+      "controlled_guard_passed": true,
+      "source_hashes_match_frozen_code": true,
+      "artifact_hashes_verified": true,
+      "report_manifest_exact_copy": true,
+      "oof_balanced_accuracy": 0.273733532189908
+    },
+    "p2_20261018_word_run2": {
+      "manifest_sha256": "670af19eeb15a36ea0ffb6456a50f4ef1aecfd8ef934f9d7586049907fe1d9b2",
+      "controlled_guard_passed": true,
+      "source_hashes_match_frozen_code": true,
+      "artifact_hashes_verified": true,
+      "report_manifest_exact_copy": true,
+      "oof_balanced_accuracy": 0.273733532189908
+    },
+    "p2_20261018_char_run1": {
+      "manifest_sha256": "e8c75028fe195ab6868f7467cdc4c0e5ab06052b3e55182d97fd0128779346c0",
+      "controlled_guard_passed": true,
+      "source_hashes_match_frozen_code": true,
+      "artifact_hashes_verified": true,
+      "report_manifest_exact_copy": true,
+      "oof_balanced_accuracy": 0.31337559035545615
+    },
+    "p2_20261018_char_run2": {
+      "manifest_sha256": "13cf3fc12de2a1de89c9881045d26a0913196a207a70d1e6e78792df2ef1729e",
+      "controlled_guard_passed": true,
+      "source_hashes_match_frozen_code": true,
+      "artifact_hashes_verified": true,
+      "report_manifest_exact_copy": true,
+      "oof_balanced_accuracy": 0.31337559035545615
+    }
+  },
+  "p0_artifacts_and_reference_files_unchanged": true,
+  "private_files_ignored": [
+    "reports/p2_20261018_word_run1/baseline_oof.csv",
+    "reports/p2_20261018_word_run1/baseline_fold_assignments.csv",
+    "artifacts/p2_20261018_word_run1/model.joblib",
+    "reports/p2_20261018_word_run2/baseline_oof.csv",
+    "reports/p2_20261018_word_run2/baseline_fold_assignments.csv",
+    "artifacts/p2_20261018_word_run2/model.joblib",
+    "reports/p2_20261018_char_run1/baseline_oof.csv",
+    "reports/p2_20261018_char_run1/baseline_fold_assignments.csv",
+    "artifacts/p2_20261018_char_run1/model.joblib",
+    "reports/p2_20261018_char_run2/baseline_oof.csv",
+    "reports/p2_20261018_char_run2/baseline_fold_assignments.csv",
+    "artifacts/p2_20261018_char_run2/model.joblib",
+    "data/raw/train.csv",
+    "data/raw/test.csv"
+  ],
+  "summary_sha256": "73e77c76990fb88ad6800617412c966d754fc498155abc924bef1e84754973c8",
+  "report_sha256": "6962984d4c549a335d6fa03271c664650226d79644328c380bab74b0fb376959",
+  "no_source_changes_since_implementation_commit": true,
+  "git_diff_check": "passed",
+  "resources": {
+    "wall_seconds": 0.931564,
+    "cpu_seconds": 0.765625,
+    "peak_rss_sampled_bytes": 160190464,
+    "rss_sampling_interval_seconds": 0.05,
+    "rss_sample_count": 16,
+    "os_peak_rss_bytes": 166027264,
+    "os_peak_rss_scope": "process lifetime, not isolated to this phase",
+    "gpu_used": false,
+    "peak_vram_bytes": null,
+    "gpu_note": "CPU scikit-learn pipeline; GPU process memory was not measured"
+  },
+  "final_document_formatting_check": {
+    "utc_checked": "2026-10-18T14:49:18.377361+00:00",
+    "previous_report_sha256": "89eea1a5d98255c3b50a4345ba3a3cea05e346563f46543723e2aaf4e101550a",
+    "changes": "Replaced three literal question-mark placeholders with explicit comparison labels; no numbers, methods, code, or experiment artifacts changed.",
+    "summary_hash_unchanged": true,
+    "source_tests_configs_unchanged": true,
+    "p0_references_unchanged": true
+  }
+}

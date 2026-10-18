@@ -33,16 +33,25 @@ encoder-specific memory/tokenizer/offload preflight remain open; no transformer 
 
 ## P2 — Compare stronger classical models
 
-Controlled feature ablation is preregistered in docs/14. P0 hash/environment
-audit passed; implementation and 90 tests passed before training. Word-only and
-char-only will each use the P0 saved folds and one exact repeat. Stylometry-only
-will be assessed after the two main runs; no transformer in this phase.
+**Controlled feature ablation complete, 2026-10-18.** See docs/14 and
+reports/p2_20261018_summary. Exact P0 dataset/folds/environment preserved;
+90 tests passed before training. Word-only BA 0.273733532190 (delta -0.042605021129),
+char-only BA 0.313375590355 (delta -0.002962962963), reference P0 BA 0.316338553318.
+Both exact repeats have identical probabilities, confusion and model hashes.
+Word delta CI is negative; character delta CI includes zero. Retain combined P0.
 
-- [ ] word-only, char-only, combined, stylometry-only CV (same fixed splits).
-- [ ] Save OOF probability matrices/classes and confusion reports.
+- [x] Compare word-only, char-only and combined on P0 saved folds.
+- [x] Save OOF probability matrices/classes, full confusion reports, configs/manifests/hashes and resources.
+- [x] Paired prompt-cluster bootstrap, all fold/class deltas, focus-class and Gemini-pair error analysis.
+- [x] Verify one exact repeat per ablation plus saved-model/template inference smoke tests.
+- [x] Assess stylometry-only: recommended as one separate next experiment; all four specified weak classes remain below 0.30 in P0.
+- [ ] Execute separately preregistered stylometry-only CV (not run in this phase).
 - [ ] Ablate em dash/punctuation and word-length features.
 
 **Done when:** evidence-based selection and per-class BA deltas are recorded.
+
+This requested Word/Character study meets that definition. The two remaining
+feature studies above are future scope. No transformer training performed.
 
 ## P3 — Encoder CV
 

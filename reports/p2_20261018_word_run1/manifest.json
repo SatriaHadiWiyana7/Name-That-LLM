@@ -1,0 +1,729 @@
+{
+  "experiment_id": "p2_20261018_word_run1",
+  "model_id": "p2_20261018_word_run1",
+  "model": "tfidf_word_logreg",
+  "feature_groups": [
+    "word"
+  ],
+  "utc_started": "2026-10-18T14:34:38.498122+00:00",
+  "utc_created": "2026-10-18T14:34:47.359069+00:00",
+  "dataset_sha256": "40a22ce8d88c5f46feb4637a099db815bef5f713ffe53e89dbe1b7b21de77707",
+  "dataset_path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\data\\raw\\train.csv",
+  "config": {
+    "name": "p2_tfidf_word_only",
+    "random_seed": 42,
+    "n_splits": 5,
+    "word": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 2,
+      "max_features": 25000,
+      "sublinear_tf": true,
+      "lowercase": true
+    },
+    "char": {
+      "analyzer": "char",
+      "ngram_range": [
+        3,
+        5
+      ],
+      "min_df": 2,
+      "max_features": 60000,
+      "sublinear_tf": true,
+      "lowercase": false
+    },
+    "classifier": {
+      "C": 3.0,
+      "max_iter": 1200,
+      "class_weight": "balanced"
+    },
+    "feature_groups": [
+      "word"
+    ]
+  },
+  "config_path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\configs\\p2_word_only.json",
+  "config_sha256": "96dc0c5c1a804ad60228d9152319d09e6f849ef38eb0caf19fa075f884f8ccfd",
+  "random_seed": 42,
+  "classifier_random_state": 42,
+  "source_sha256": {
+    "scripts/analyze_oof.py": "a33dfceb1838e6f0e63a99ad6ae33531092b29b747ea2b915bc45ef0d6f7a477",
+    "scripts/audit_dataset.py": "1c094630b12c8a1100bc28067bd921333fccaef6e1ce3ae3fd1be141dfa7ebc6",
+    "scripts/check_gpu.py": "d60b1d12f6120e9b907ad9f59ee6825222a77d41882c00b62affa8034848d0a0",
+    "scripts/compare_oof.py": "fda6cb4b0e46fd51980c4130c173f361b7252c9713241bfd69747d1d8eeb9e2a",
+    "scripts/predict_local.py": "a86b9ab25fca1b901a739041fc9b28d305efcafdd9281968dedbb06c8afec2df",
+    "scripts/prepare_data.py": "fb9e71bdbcf3ddcce80be22ff5bf4741a7c6bc83b9b645639ba4099023816757",
+    "scripts/record_score.py": "a04c357a7d31cfd6c3f5d601b44e7801e903690592e0dc1b02b8f69cf2a5d456",
+    "scripts/train_baseline.py": "7a7db676833010d124a0ae3e7c7f5a758e0e7f6873658e8a5a9c6ddd61305c32",
+    "scripts/validate_submission.py": "9da14370a37c5ad8f4a52497bfa16dff2cd7564728c459ed38d01c9b033064ff",
+    "scripts/verify_reproduction.py": "5b39f8b159f886d41c779cb99c0f0b5b422337467e4ffc4ad27f79cbe490106a",
+    "src/name_that_llm/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+    "src/name_that_llm/ablation.py": "52f287d7b19b969493a660a53cfc4746a874b923876dfc6a8d020e16580b7269",
+    "src/name_that_llm/analysis.py": "533d84c4a996fca75d0bde337eea31e09b555573c59c593939359990417043d8",
+    "src/name_that_llm/baseline.py": "7aa648c472fef839bc8222a8afed0659f01a471867ef83453d1a94df9ba934fa",
+    "src/name_that_llm/comparison.py": "895d65cd7486e2898ad9bc30bb3479dd8b04a4ca71ed4ef98301578d90302492",
+    "src/name_that_llm/io.py": "025de6d653c42e2c320edb0cb90741b01e5eccfeea88748ca3bd140a0e8ecc87",
+    "src/name_that_llm/labels.py": "479a95f2ba1e1ab21f2712704300e064c804e643e915bfaaecf7cc7d06dccf94",
+    "src/name_that_llm/metrics.py": "fb6c666c24199d6789f62dd4d46fadd00ec3804594c66a314b10b55f39835a8c",
+    "src/name_that_llm/runtime.py": "e374d902a7d2c5d9f25f5564710a5f489c2947e5a68e08d7fd6fb7123cf7b345",
+    "src/name_that_llm/submission.py": "15ed11756f06db3e70cb338dc3dc85785e711e246f750cd85f264d01d6856eab",
+    "src/name_that_llm/validation.py": "8e43accdb3398c99fc0170aa96e7be50c0e3a60269b504e6642e04a20a4bb8c3"
+  },
+  "labels": [
+    "claude-fable-5",
+    "claude-opus-4-6",
+    "claude-opus-4-8",
+    "claude-opus-5",
+    "claude-sonnet-5",
+    "gemini-3.1-pro-preview",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.8-flash",
+    "glm-5.3",
+    "glm-5.3-flash",
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-6-astra",
+    "kimi-k3",
+    "qwen3.8-max"
+  ],
+  "probability_columns": [
+    "p_claude-fable-5",
+    "p_claude-opus-4-6",
+    "p_claude-opus-4-8",
+    "p_claude-opus-5",
+    "p_claude-sonnet-5",
+    "p_gemini-3.1-pro-preview",
+    "p_gemini-3.6-flash",
+    "p_gemini-3.7-flash",
+    "p_gemini-3.8-flash",
+    "p_glm-5.3",
+    "p_glm-5.3-flash",
+    "p_gpt-5.5",
+    "p_gpt-5.6-luna",
+    "p_gpt-5.6-sol",
+    "p_gpt-5.6-terra",
+    "p_gpt-6-astra",
+    "p_kimi-k3",
+    "p_qwen3.8-max"
+  ],
+  "environment": {
+    "python": "3.13.11",
+    "executable": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": {
+      "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+      "identifier": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+      "physical_cores": 6,
+      "logical_cores": 12
+    },
+    "system_ram_bytes": 34191179776,
+    "dependencies": {
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "iniconfig": "2.3.1",
+      "joblib": "1.6.0",
+      "name-that-llm-top5": "0.1.0",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pandas": "2.3.3",
+      "pip": "25.3",
+      "pluggy": "1.7.0",
+      "psutil": "7.2.2",
+      "pyarrow": "26.0.0",
+      "Pygments": "2.21.0",
+      "pytest": "9.1.1",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2026.5",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.18.1",
+      "six": "1.17.0",
+      "threadpoolctl": "3.7.0",
+      "tzdata": "2026.5"
+    },
+    "thread_environment": {
+      "OMP_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "NUMEXPR_NUM_THREADS": "2",
+      "VECLIB_MAXIMUM_THREADS": null,
+      "BLIS_NUM_THREADS": null,
+      "PYTHONHASHSEED": "42"
+    },
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+        "version": "0.3.34.106.0",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 2,
+        "prefix": "vcomp",
+        "filepath": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+        "version": null
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 2,
+        "prefix": "libscipy_openblas",
+        "filepath": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+        "version": "0.3.31.dev",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "argv": [
+      "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+      "scripts/train_baseline.py",
+      "--config",
+      "configs/p2_word_only.json",
+      "--run-id",
+      "p2_20261018_word_run1",
+      "--reports",
+      "reports/p2_20261018_word_run1",
+      "--out",
+      "artifacts/p2_20261018_word_run1",
+      "--folds",
+      "reports/p0_20261018_run1/baseline_fold_assignments.csv",
+      "--environment-report",
+      "reports/p2_20261018_preflight.json",
+      "--reference-metrics",
+      "reports/p0_20261018_run1/baseline_metrics.json",
+      "--reference-manifest",
+      "artifacts/p0_20261018_run1/manifest.json"
+    ],
+    "command": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe scripts/train_baseline.py --config configs/p2_word_only.json --run-id p2_20261018_word_run1 --reports reports/p2_20261018_word_run1 --out artifacts/p2_20261018_word_run1 --folds reports/p0_20261018_run1/baseline_fold_assignments.csv --environment-report reports/p2_20261018_preflight.json --reference-metrics reports/p0_20261018_run1/baseline_metrics.json --reference-manifest artifacts/p0_20261018_run1/manifest.json",
+    "cwd": "C:\\MY_FOLDER\\CODE\\Name-That-LLM",
+    "external_report": {
+      "path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p2_20261018_preflight.json",
+      "sha256": "63a7e5e977d63a5d805e4ffb93d279372c57bed8e674b00d9a8f4a9c77b63003",
+      "report": {
+        "schema_version": 1,
+        "audit_id": "p2_20261018_preflight",
+        "client_date": "2026-10-18",
+        "client_timezone": "Asia/Jakarta",
+        "observed_at_utc": "2026-10-18T10:07:24.332771+00:00",
+        "scope": "Read-only P0 artifact, data, fold and CPU environment verification; no training, installs, GPU use or source changes",
+        "commands": [
+          "PowerShell: OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 NUMEXPR_NUM_THREADS=2 PYTHONHASHSEED=42; .venv/Scripts/python.exe - (stdin source stored below)"
+        ],
+        "blockers": [],
+        "runs": {
+          "p0_20261018_run1": {
+            "manifest_path": "artifacts\\p0_20261018_run1\\manifest.json",
+            "manifest_sha256": "0aa526875461eb9594445ac8c0c98130879f98cfe687b79f0b1adf642576a115",
+            "artifacts": {
+              "metrics": {
+                "path": "reports\\p0_20261018_run1\\baseline_metrics.json",
+                "sha256": "3dad1714df80d5bebf998e8b8ff8d142efaae46dc0bfb6523d5bb255e554061b",
+                "bytes": 44976,
+                "matches_p0_manifest": true
+              },
+              "oof": {
+                "path": "reports\\p0_20261018_run1\\baseline_oof.csv",
+                "sha256": "b5892d1342538840f18750c0e502a62a92adfe2a88615ba9e05c7eb64fe915f1",
+                "bytes": 1160358,
+                "matches_p0_manifest": true
+              },
+              "folds": {
+                "path": "reports\\p0_20261018_run1\\baseline_fold_assignments.csv",
+                "sha256": "3357fd3f290aaad4f1e50d9864db729e3803c2b6c62625748ff28408e94cb2bd",
+                "bytes": 56698,
+                "matches_p0_manifest": true
+              },
+              "model": {
+                "path": "artifacts\\p0_20261018_run1\\model.joblib",
+                "sha256": "04ae12aec9996cebb95ed2e31dd96ddb32bdf31557d96641a222f7c3415ef324",
+                "bytes": 11982649,
+                "matches_p0_manifest": true
+              }
+            },
+            "dataset_sha256": "40a22ce8d88c5f46feb4637a099db815bef5f713ffe53e89dbe1b7b21de77707",
+            "dataset_hash_matches": true,
+            "labels_match": true,
+            "probability_order_matches": true,
+            "aggregate_metrics_match": true,
+            "balanced_accuracy": 0.31633855331841904,
+            "fold_metrics_match": true
+          },
+          "p0_20261018_run2": {
+            "manifest_path": "artifacts\\p0_20261018_run2\\manifest.json",
+            "manifest_sha256": "1371c624c40c62a74e02749da0b749b2ad3b52dc6801d7eefb71631d319673e4",
+            "artifacts": {
+              "metrics": {
+                "path": "reports\\p0_20261018_run2\\baseline_metrics.json",
+                "sha256": "a39f274f1287d44f6a6366ea29ad3c95301de00c86f4c30546ce3f5bc6ac4ddc",
+                "bytes": 45643,
+                "matches_p0_manifest": true
+              },
+              "oof": {
+                "path": "reports\\p0_20261018_run2\\baseline_oof.csv",
+                "sha256": "73e2350ab8fd721275c5dbe417c4f94495a3c2d94544856ad4b22acfef329bf8",
+                "bytes": 1160358,
+                "matches_p0_manifest": true
+              },
+              "folds": {
+                "path": "reports\\p0_20261018_run2\\baseline_fold_assignments.csv",
+                "sha256": "3357fd3f290aaad4f1e50d9864db729e3803c2b6c62625748ff28408e94cb2bd",
+                "bytes": 56698,
+                "matches_p0_manifest": true
+              },
+              "model": {
+                "path": "artifacts\\p0_20261018_run2\\model.joblib",
+                "sha256": "04ae12aec9996cebb95ed2e31dd96ddb32bdf31557d96641a222f7c3415ef324",
+                "bytes": 11982649,
+                "matches_p0_manifest": true
+              }
+            },
+            "dataset_sha256": "40a22ce8d88c5f46feb4637a099db815bef5f713ffe53e89dbe1b7b21de77707",
+            "dataset_hash_matches": true,
+            "labels_match": true,
+            "probability_order_matches": true,
+            "aggregate_metrics_match": true,
+            "balanced_accuracy": 0.31633855331841904,
+            "fold_metrics_match": true
+          }
+        },
+        "dataset": {
+          "path": "data/raw/train.csv",
+          "sha256": "40a22ce8d88c5f46feb4637a099db815bef5f713ffe53e89dbe1b7b21de77707",
+          "rows": 2699,
+          "prompts": 150,
+          "labels": [
+            "claude-fable-5",
+            "claude-opus-4-6",
+            "claude-opus-4-8",
+            "claude-opus-5",
+            "claude-sonnet-5",
+            "gemini-3.1-pro-preview",
+            "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
+            "glm-5.3",
+            "glm-5.3-flash",
+            "gpt-5.5",
+            "gpt-5.6-luna",
+            "gpt-5.6-sol",
+            "gpt-5.6-terra",
+            "gpt-6-astra",
+            "kimi-k3",
+            "qwen3.8-max"
+          ],
+          "class_counts": {
+            "claude-fable-5": 149,
+            "claude-opus-4-6": 150,
+            "claude-opus-4-8": 150,
+            "claude-opus-5": 150,
+            "claude-sonnet-5": 150,
+            "gemini-3.1-pro-preview": 150,
+            "gemini-3.6-flash": 150,
+            "gemini-3.7-flash": 150,
+            "gemini-3.8-flash": 150,
+            "glm-5.3": 150,
+            "glm-5.3-flash": 150,
+            "gpt-5.5": 150,
+            "gpt-5.6-luna": 150,
+            "gpt-5.6-sol": 150,
+            "gpt-5.6-terra": 150,
+            "gpt-6-astra": 150,
+            "kimi-k3": 150,
+            "qwen3.8-max": 150
+          },
+          "duplicate_texts": 0,
+          "fold_mapping_sha256": "3357fd3f290aaad4f1e50d9864db729e3803c2b6c62625748ff28408e94cb2bd",
+          "same_as_current_groupkfold": true,
+          "folds": [
+            {
+              "fold": 0,
+              "validation_rows": 540,
+              "validation_prompts": 30,
+              "validation_label_counts": {
+                "claude-fable-5": 30,
+                "claude-opus-4-6": 30,
+                "claude-opus-4-8": 30,
+                "claude-opus-5": 30,
+                "claude-sonnet-5": 30,
+                "gemini-3.1-pro-preview": 30,
+                "gemini-3.6-flash": 30,
+                "gemini-3.7-flash": 30,
+                "gemini-3.8-flash": 30,
+                "glm-5.3": 30,
+                "glm-5.3-flash": 30,
+                "gpt-5.5": 30,
+                "gpt-5.6-luna": 30,
+                "gpt-5.6-sol": 30,
+                "gpt-5.6-terra": 30,
+                "gpt-6-astra": 30,
+                "kimi-k3": 30,
+                "qwen3.8-max": 30
+              },
+              "train_prompt_overlap": 0
+            },
+            {
+              "fold": 1,
+              "validation_rows": 540,
+              "validation_prompts": 30,
+              "validation_label_counts": {
+                "claude-fable-5": 30,
+                "claude-opus-4-6": 30,
+                "claude-opus-4-8": 30,
+                "claude-opus-5": 30,
+                "claude-sonnet-5": 30,
+                "gemini-3.1-pro-preview": 30,
+                "gemini-3.6-flash": 30,
+                "gemini-3.7-flash": 30,
+                "gemini-3.8-flash": 30,
+                "glm-5.3": 30,
+                "glm-5.3-flash": 30,
+                "gpt-5.5": 30,
+                "gpt-5.6-luna": 30,
+                "gpt-5.6-sol": 30,
+                "gpt-5.6-terra": 30,
+                "gpt-6-astra": 30,
+                "kimi-k3": 30,
+                "qwen3.8-max": 30
+              },
+              "train_prompt_overlap": 0
+            },
+            {
+              "fold": 2,
+              "validation_rows": 540,
+              "validation_prompts": 30,
+              "validation_label_counts": {
+                "claude-fable-5": 30,
+                "claude-opus-4-6": 30,
+                "claude-opus-4-8": 30,
+                "claude-opus-5": 30,
+                "claude-sonnet-5": 30,
+                "gemini-3.1-pro-preview": 30,
+                "gemini-3.6-flash": 30,
+                "gemini-3.7-flash": 30,
+                "gemini-3.8-flash": 30,
+                "glm-5.3": 30,
+                "glm-5.3-flash": 30,
+                "gpt-5.5": 30,
+                "gpt-5.6-luna": 30,
+                "gpt-5.6-sol": 30,
+                "gpt-5.6-terra": 30,
+                "gpt-6-astra": 30,
+                "kimi-k3": 30,
+                "qwen3.8-max": 30
+              },
+              "train_prompt_overlap": 0
+            },
+            {
+              "fold": 3,
+              "validation_rows": 540,
+              "validation_prompts": 30,
+              "validation_label_counts": {
+                "claude-fable-5": 30,
+                "claude-opus-4-6": 30,
+                "claude-opus-4-8": 30,
+                "claude-opus-5": 30,
+                "claude-sonnet-5": 30,
+                "gemini-3.1-pro-preview": 30,
+                "gemini-3.6-flash": 30,
+                "gemini-3.7-flash": 30,
+                "gemini-3.8-flash": 30,
+                "glm-5.3": 30,
+                "glm-5.3-flash": 30,
+                "gpt-5.5": 30,
+                "gpt-5.6-luna": 30,
+                "gpt-5.6-sol": 30,
+                "gpt-5.6-terra": 30,
+                "gpt-6-astra": 30,
+                "kimi-k3": 30,
+                "qwen3.8-max": 30
+              },
+              "train_prompt_overlap": 0
+            },
+            {
+              "fold": 4,
+              "validation_rows": 539,
+              "validation_prompts": 30,
+              "validation_label_counts": {
+                "claude-fable-5": 29,
+                "claude-opus-4-6": 30,
+                "claude-opus-4-8": 30,
+                "claude-opus-5": 30,
+                "claude-sonnet-5": 30,
+                "gemini-3.1-pro-preview": 30,
+                "gemini-3.6-flash": 30,
+                "gemini-3.7-flash": 30,
+                "gemini-3.8-flash": 30,
+                "glm-5.3": 30,
+                "glm-5.3-flash": 30,
+                "gpt-5.5": 30,
+                "gpt-5.6-luna": 30,
+                "gpt-5.6-sol": 30,
+                "gpt-5.6-terra": 30,
+                "gpt-6-astra": 30,
+                "kimi-k3": 30,
+                "qwen3.8-max": 30
+              },
+              "train_prompt_overlap": 0
+            }
+          ]
+        },
+        "p0_repetition": {
+          "same_predictions": true,
+          "same_metadata": true,
+          "max_probability_absolute_difference": 0.0,
+          "same_model_sha256": true,
+          "same_fold_sha256": true
+        },
+        "environment": {
+          "python": "3.13.11",
+          "executable": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "cpu": {
+            "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+            "identifier": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+            "physical_cores": 6,
+            "logical_cores": 12
+          },
+          "system_ram_bytes": 34191179776,
+          "dependencies": {
+            "cloudpickle": "3.1.2",
+            "colorama": "0.4.6",
+            "iniconfig": "2.3.1",
+            "joblib": "1.6.0",
+            "name-that-llm-top5": "0.1.0",
+            "numpy": "2.5.4",
+            "packaging": "26.3",
+            "pandas": "2.3.3",
+            "pip": "25.3",
+            "pluggy": "1.7.0",
+            "psutil": "7.2.2",
+            "pyarrow": "26.0.0",
+            "Pygments": "2.21.0",
+            "pytest": "9.1.1",
+            "python-dateutil": "2.9.0.post0",
+            "pytz": "2026.5",
+            "scikit-learn": "1.8.0",
+            "scipy": "1.18.1",
+            "six": "1.17.0",
+            "threadpoolctl": "3.7.0",
+            "tzdata": "2026.5"
+          },
+          "thread_environment": {
+            "OMP_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "VECLIB_MAXIMUM_THREADS": null,
+            "BLIS_NUM_THREADS": null,
+            "PYTHONHASHSEED": "42"
+          },
+          "threadpools": [
+            {
+              "user_api": "blas",
+              "internal_api": "openblas",
+              "num_threads": 2,
+              "prefix": "libscipy_openblas",
+              "filepath": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+              "version": "0.3.34.106.0",
+              "threading_layer": "pthreads",
+              "architecture": "Haswell"
+            },
+            {
+              "user_api": "openmp",
+              "internal_api": "openmp",
+              "num_threads": 2,
+              "prefix": "vcomp",
+              "filepath": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+              "version": null
+            },
+            {
+              "user_api": "blas",
+              "internal_api": "openblas",
+              "num_threads": 2,
+              "prefix": "libscipy_openblas",
+              "filepath": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+              "version": "0.3.31.dev",
+              "threading_layer": "pthreads",
+              "architecture": "Haswell"
+            }
+          ],
+          "argv": [
+            "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+            "-"
+          ],
+          "command": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe -",
+          "cwd": "C:\\MY_FOLDER\\CODE\\Name-That-LLM"
+        },
+        "environment_comparison": {
+          "python_match": true,
+          "executable_match": true,
+          "all_dependencies_match_p0": true,
+          "manifest_dependency_differences": {},
+          "all_pinned_lock_dependencies_match": true,
+          "lock_sha256": "fdf5a5a604324a66132fa97c95c727a4b6d86726ad7b2f0e49d1b0aaab57b6dd",
+          "lock_pinned_dependency_count": 20,
+          "editable_project_line_preserved": true,
+          "thread_environment_match": true,
+          "threadpools_match": true,
+          "cpu_match": true,
+          "ram_capacity_match": true
+        },
+        "resources_observed": {
+          "at_utc": "2026-10-18T10:07:24.641397+00:00",
+          "ram_total_bytes": 34191179776,
+          "ram_available_bytes": 18822488064,
+          "ram_used_percent": 44.9,
+          "disk_root": "C:\\",
+          "disk_total_bytes": 512004263936,
+          "disk_used_bytes": 325967261696,
+          "disk_free_bytes": 186037002240,
+          "physical_cpu_count": 6,
+          "logical_cpu_count": 12,
+          "cpu_usage_percent_0_2seconds": 18.4,
+          "gpu_used": false,
+          "gpu_peak_memory_bytes": null
+        },
+        "status": "passed",
+        "executed_python_stdin": "import json, os, platform, sys, shutil\nfrom pathlib import Path\nfrom datetime import datetime, timezone\nimport importlib.metadata as metadata\nimport numpy as np\nimport pandas as pd\nimport psutil\nfrom name_that_llm.io import load_train, sha256_file\nfrom name_that_llm.labels import LABELS\nfrom name_that_llm.analysis import validate_oof\nfrom name_that_llm.metrics import classification_report\nfrom name_that_llm.runtime import environment_snapshot, validate_fold_mapping\nfrom name_that_llm.validation import fold_assignments\nroot=Path.cwd()\nout=root/\"reports/p2_20261018_preflight.json\"\nassert not out.exists(), \"Refuse audit overwrite\"\naudit={\"schema_version\":1,\"audit_id\":\"p2_20261018_preflight\",\"client_date\":\"2026-10-18\",\"client_timezone\":\"Asia/Jakarta\",\"observed_at_utc\":datetime.now(timezone.utc).isoformat(),\"scope\":\"Read-only P0 artifact, data, fold and CPU environment verification; no training, installs, GPU use or source changes\",\"commands\":[\"PowerShell: OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 NUMEXPR_NUM_THREADS=2 PYTHONHASHSEED=42; .venv/Scripts/python.exe - (stdin source stored below)\"],\"blockers\":[],\"runs\":{}}\nframes=[]\nmanifests=[]\nfor run in [\"p0_20261018_run1\",\"p0_20261018_run2\"]:\n    manifest_path=root/\"artifacts\"/run/\"manifest.json\"\n    manifest=json.loads(manifest_path.read_text(encoding=\"utf-8\"))\n    manifests.append(manifest)\n    checks={\"manifest_path\":str(manifest_path.relative_to(root)),\"manifest_sha256\":sha256_file(manifest_path),\"artifacts\":{}}\n    for name,artifact in manifest[\"artifacts\"].items():\n        p=Path(artifact[\"path\"])\n        observed_hash=sha256_file(p)\n        observed_bytes=p.stat().st_size\n        passed=observed_hash==artifact[\"sha256\"] and observed_bytes==artifact[\"bytes\"]\n        checks[\"artifacts\"][name]={\"path\":str(p.relative_to(root)),\"sha256\":observed_hash,\"bytes\":observed_bytes,\"matches_p0_manifest\":passed}\n        if not passed: audit[\"blockers\"].append(run+\" artifact mismatch \"+name)\n    dataset_sha=sha256_file(manifest[\"dataset_path\"])\n    checks[\"dataset_sha256\"]=dataset_sha\n    checks[\"dataset_hash_matches\"]=dataset_sha==manifest[\"dataset_sha256\"]\n    checks[\"labels_match\"]=manifest[\"labels\"]==LABELS\n    checks[\"probability_order_matches\"]=manifest[\"probability_columns\"]==[\"p_\"+label for label in LABELS]\n    frame=pd.read_csv(manifest[\"artifacts\"][\"oof\"][\"path\"],dtype={\"id\":str,\"prompt_id\":str})\n    validate_oof(frame)\n    metric=json.loads(Path(manifest[\"artifacts\"][\"metrics\"][\"path\"]).read_text(encoding=\"utf-8\"))\n    recomputed=classification_report(frame.true_model,frame.pred_model)\n    checks[\"aggregate_metrics_match\"]=all(metric[k]==recomputed[k] for k in [\"balanced_accuracy\",\"class_recall\",\"class_support\",\"confusion_matrix\"])\n    checks[\"balanced_accuracy\"]=recomputed[\"balanced_accuracy\"]\n    checks[\"fold_metrics_match\"]=True\n    for fold in metric[\"folds\"]:\n        subset=frame[frame.fold==fold[\"fold\"]]\n        measured=classification_report(subset.true_model,subset.pred_model)\n        checks[\"fold_metrics_match\"] &= all(fold[k]==measured[k] for k in [\"balanced_accuracy\",\"class_recall\",\"confusion_matrix\"])\n    for key in [\"dataset_hash_matches\",\"labels_match\",\"probability_order_matches\",\"aggregate_metrics_match\",\"fold_metrics_match\"]:\n        if not checks[key]: audit[\"blockers\"].append(run+\" \"+key)\n    frames.append(frame)\n    audit[\"runs\"][run]=checks\ntrain=load_train(\"data/raw/train.csv\")\nmapping=pd.read_csv(\"reports/p0_20261018_run1/baseline_fold_assignments.csv\",dtype={\"id\":str,\"prompt_id\":str})\nassigned=validate_fold_mapping(train,mapping,5)\naudit[\"dataset\"]={\"path\":\"data/raw/train.csv\",\"sha256\":sha256_file(\"data/raw/train.csv\"),\"rows\":len(train),\"prompts\":int(train.prompt_id.nunique()),\"labels\":LABELS,\"class_counts\":{k:int(v) for k,v in train.model.value_counts().reindex(LABELS).items()},\"duplicate_texts\":int(train.text.duplicated().sum()),\"fold_mapping_sha256\":sha256_file(\"reports/p0_20261018_run1/baseline_fold_assignments.csv\"),\"same_as_current_groupkfold\":bool(np.array_equal(assigned,fold_assignments(train,5))),\"folds\":[]}\nfor fold in range(5):\n    subset=train[assigned==fold]\n    audit[\"dataset\"][\"folds\"].append({\"fold\":fold,\"validation_rows\":len(subset),\"validation_prompts\":int(subset.prompt_id.nunique()),\"validation_label_counts\":{k:int(v) for k,v in subset.model.value_counts().reindex(LABELS).items()},\"train_prompt_overlap\":len(set(subset.prompt_id)&set(train.loc[assigned!=fold,\"prompt_id\"]))})\nfor frame in frames:\n    aligned=frame.set_index(\"id\").loc[train.id]\n    assert np.array_equal(aligned.true_model.to_numpy(),train.model.to_numpy())\n    assert np.array_equal(aligned.prompt_id.to_numpy(),train.prompt_id.to_numpy())\n    assert np.array_equal(aligned.fold.to_numpy(),assigned)\npcols=[\"p_\"+label for label in LABELS]\naudit[\"p0_repetition\"]={\"same_predictions\":frames[0].pred_model.equals(frames[1].pred_model),\"same_metadata\":frames[0][[\"id\",\"prompt_id\",\"fold\",\"true_model\"]].equals(frames[1][[\"id\",\"prompt_id\",\"fold\",\"true_model\"]]),\"max_probability_absolute_difference\":float(np.abs(frames[0][pcols].to_numpy()-frames[1][pcols].to_numpy()).max()),\"same_model_sha256\":manifests[0][\"model_sha256\"]==manifests[1][\"model_sha256\"],\"same_fold_sha256\":manifests[0][\"fold_assignments_sha256\"]==manifests[1][\"fold_assignments_sha256\"]}\nenv=environment_snapshot()\nnormalize=lambda name:name.lower().replace(\"_\",\"-\")\ncurrent_deps={normalize(k):v for k,v in env[\"dependencies\"].items()}\nreference_deps={normalize(k):v for k,v in manifests[0][\"environment\"][\"dependencies\"].items()}\nlock=Path(\"reports/p0_20261018_requirements-lock.txt\")\nlock_deps={}\nfor line in lock.read_text(encoding=\"utf-8-sig\").splitlines():\n    if \"==\" in line:\n        name,version=line.split(\"==\",1); lock_deps[normalize(name)]=version\naudit[\"environment\"]=env\naudit[\"environment_comparison\"]={\"python_match\":env[\"python\"]==manifests[0][\"environment\"][\"python\"],\"executable_match\":env[\"executable\"]==manifests[0][\"environment\"][\"executable\"],\"all_dependencies_match_p0\":current_deps==reference_deps,\"manifest_dependency_differences\":{k:{\"p0\":reference_deps.get(k),\"observed\":current_deps.get(k)} for k in set(current_deps)|set(reference_deps) if current_deps.get(k)!=reference_deps.get(k)},\"all_pinned_lock_dependencies_match\":all(current_deps.get(k)==v for k,v in lock_deps.items()),\"lock_sha256\":sha256_file(lock),\"lock_pinned_dependency_count\":len(lock_deps),\"editable_project_line_preserved\":\"-e .\" in lock.read_text(encoding=\"utf-8-sig\").splitlines(),\"thread_environment_match\":env[\"thread_environment\"]==manifests[0][\"environment\"][\"thread_environment\"],\"threadpools_match\":env[\"threadpools\"]==manifests[0][\"environment\"][\"threadpools\"],\"cpu_match\":env[\"cpu\"]==manifests[0][\"environment\"][\"cpu\"],\"ram_capacity_match\":env[\"system_ram_bytes\"]==manifests[0][\"environment\"][\"system_ram_bytes\"]}\nfor key in [\"python_match\",\"executable_match\",\"all_dependencies_match_p0\",\"all_pinned_lock_dependencies_match\",\"thread_environment_match\",\"threadpools_match\",\"cpu_match\",\"ram_capacity_match\"]:\n    if not audit[\"environment_comparison\"][key]: audit[\"blockers\"].append(\"environment \"+key)\nmemory=psutil.virtual_memory()\ndisk=shutil.disk_usage(root)\naudit[\"resources_observed\"]={\"at_utc\":datetime.now(timezone.utc).isoformat(),\"ram_total_bytes\":memory.total,\"ram_available_bytes\":memory.available,\"ram_used_percent\":memory.percent,\"disk_root\":root.anchor,\"disk_total_bytes\":disk.total,\"disk_used_bytes\":disk.used,\"disk_free_bytes\":disk.free,\"physical_cpu_count\":psutil.cpu_count(logical=False),\"logical_cpu_count\":psutil.cpu_count(logical=True),\"cpu_usage_percent_0_2seconds\":psutil.cpu_percent(interval=0.2),\"gpu_used\":False,\"gpu_peak_memory_bytes\":None}\naudit[\"status\"]=\"passed\" if not audit[\"blockers\"] else \"blocked\"\n"
+      }
+    }
+  },
+  "validation": "5-fold saved prompt-grouped mapping",
+  "fold_source": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p0_20261018_run1\\baseline_fold_assignments.csv",
+  "fold_assignments_sha256": "3357fd3f290aaad4f1e50d9864db729e3803c2b6c62625748ff28408e94cb2bd",
+  "oof_balanced_accuracy": 0.273733532189908,
+  "oof_metrics_path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p2_20261018_word_run1\\baseline_metrics.json",
+  "model_sha256": "467ec76898f8f7d488392d90ae522e93799dbd870e0e95cb4ef920c847b711fd",
+  "artifacts": {
+    "metrics": {
+      "path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p2_20261018_word_run1\\baseline_metrics.json",
+      "sha256": "d7250498ddaa5b7acb53dec9d797976361bbe42705ec8172091a6a8dd2e69310",
+      "bytes": 46155
+    },
+    "oof": {
+      "path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p2_20261018_word_run1\\baseline_oof.csv",
+      "sha256": "044bf47b860775f3968745824b69e520aa92d6ef3542388b3ef5c6c13dc6469f",
+      "bytes": 1171627
+    },
+    "folds": {
+      "path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p2_20261018_word_run1\\baseline_fold_assignments.csv",
+      "sha256": "3357fd3f290aaad4f1e50d9864db729e3803c2b6c62625748ff28408e94cb2bd",
+      "bytes": 56698
+    },
+    "model": {
+      "path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\artifacts\\p2_20261018_word_run1\\model.joblib",
+      "sha256": "467ec76898f8f7d488392d90ae522e93799dbd870e0e95cb4ef920c847b711fd",
+      "bytes": 3718594
+    },
+    "config": {
+      "path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p2_20261018_word_run1\\config.json",
+      "sha256": "96dc0c5c1a804ad60228d9152319d09e6f849ef38eb0caf19fa075f884f8ccfd",
+      "bytes": 568
+    }
+  },
+  "resources": {
+    "wall_seconds": 8.833446,
+    "cpu_seconds": 8.859375,
+    "peak_rss_sampled_bytes": 330559488,
+    "rss_sampling_interval_seconds": 0.05,
+    "rss_sample_count": 121,
+    "os_peak_rss_bytes": 336162816,
+    "os_peak_rss_scope": "process lifetime, not isolated to this phase",
+    "gpu_used": false,
+    "peak_vram_bytes": null,
+    "gpu_note": "CPU scikit-learn pipeline; GPU process memory was not measured",
+    "scope": "OOF training/evaluation, OOF CSV write, final refit and model serialization; excludes startup and final manifest/register writes"
+  },
+  "final_fit_resources": {
+    "wall_seconds": 1.570377,
+    "cpu_seconds": 1.59375,
+    "peak_rss_sampled_bytes": 330756096,
+    "rss_sampling_interval_seconds": 0.05,
+    "rss_sample_count": 23,
+    "os_peak_rss_bytes": 336162816,
+    "os_peak_rss_scope": "process lifetime, not isolated to this phase",
+    "gpu_used": false,
+    "peak_vram_bytes": null,
+    "gpu_note": "CPU scikit-learn pipeline; GPU process memory was not measured"
+  },
+  "serialization_resources": {
+    "wall_seconds": 0.409688,
+    "cpu_seconds": 0.390625,
+    "peak_rss_sampled_bytes": 217493504,
+    "rss_sampling_interval_seconds": 0.05,
+    "rss_sample_count": 7,
+    "os_peak_rss_bytes": 336162816,
+    "os_peak_rss_scope": "process lifetime, not isolated to this phase",
+    "gpu_used": false,
+    "peak_vram_bytes": null,
+    "gpu_note": "CPU scikit-learn pipeline; GPU process memory was not measured"
+  },
+  "timings": {
+    "oof_seconds": 6.813215,
+    "oof_fit_seconds": 6.4576,
+    "final_fit_seconds": 1.569287,
+    "serialization_seconds": 0.409688,
+    "total_before_manifest_seconds": 9.026583
+  },
+  "serialization": "joblib; LOAD ONLY TRUSTED LOCAL ARTIFACTS",
+  "reference_comparison": {
+    "reference_balanced_accuracy": 0.31633855331841904,
+    "numerical_difference": -0.042605021128511056,
+    "identical_dataset_folds_seed_verified": true,
+    "delta_balanced_accuracy": -0.042605021128511056,
+    "interpretation": "Measured difference on identical dataset hash, saved fold mapping hash and seed",
+    "per_fold_delta_balanced_accuracy": {
+      "0": -0.037037037037037035,
+      "1": -0.04259259259259257,
+      "2": -0.05555555555555547,
+      "3": -0.04999999999999999,
+      "4": -0.027777777777777735
+    },
+    "class_recall_delta": {
+      "claude-fable-5": -0.03355704697986578,
+      "claude-opus-4-6": -0.16000000000000003,
+      "claude-opus-4-8": -0.053333333333333316,
+      "claude-opus-5": 0.0,
+      "claude-sonnet-5": -0.06666666666666668,
+      "gemini-3.1-pro-preview": -0.039999999999999925,
+      "gemini-3.6-flash": -0.006666666666666654,
+      "gemini-3.7-flash": -0.046666666666666634,
+      "gemini-3.8-flash": -0.006666666666666654,
+      "glm-5.3": -0.01999999999999999,
+      "glm-5.3-flash": -0.09333333333333334,
+      "gpt-5.5": -0.06666666666666665,
+      "gpt-5.6-luna": -0.04666666666666666,
+      "gpt-5.6-sol": -0.006666666666666682,
+      "gpt-5.6-terra": -0.00666666666666671,
+      "gpt-6-astra": -0.040000000000000036,
+      "kimi-k3": 0.0,
+      "qwen3.8-max": -0.0733333333333333
+    },
+    "path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\reports\\p0_20261018_run1\\baseline_metrics.json",
+    "sha256": "3dad1714df80d5bebf998e8b8ff8d142efaae46dc0bfb6523d5bb255e554061b"
+  },
+  "controlled_ablation_validation": {
+    "status": "passed_before_fitting",
+    "reference_manifest_path": "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\artifacts\\p0_20261018_run1\\manifest.json",
+    "reference_manifest_sha256": "0aa526875461eb9594445ac8c0c98130879f98cfe687b79f0b1adf642576a115",
+    "reference_metrics_sha256": "3dad1714df80d5bebf998e8b8ff8d142efaae46dc0bfb6523d5bb255e554061b",
+    "reference_experiment_id": "p0_20261018_run1",
+    "feature_groups": [
+      "word"
+    ],
+    "only_permitted_config_changes": [
+      "name",
+      "feature_groups"
+    ],
+    "dataset_folds_seed_labels_environment_verified": true
+  }
+}

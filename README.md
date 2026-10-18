@@ -92,3 +92,15 @@ forward/backward steps; no transformer was trained.
 See [`docs/13_LOCAL_P0_REPRODUCTION.md`](docs/13_LOCAL_P0_REPRODUCTION.md) for
 all class recalls, fold metrics, confusion reports, resource measurements,
 reproduction commands and remaining encoder/Kaggle checks.
+
+## Controlled feature ablation — 2026-10-18
+
+On the same P0 folds/environment, Word-only measured **BA 0.273733532190**
+(delta **-0.042605021129**) and Character-only **0.313375590355**
+(delta **-0.002962962963**). The Word-only paired prompt-bootstrap interval is
+entirely negative; the Character-only interval includes zero. Keep combined P0.
+Each variant repeated with identical probabilities/model hash; 90 unit tests pass.
+
+See [the P2 report](docs/14_P2_CONTROLLED_FEATURE_ABLATION.md) for all fold/class
+scores, full confusion matrices, paired intervals and resources. The next
+recommended experiment is separate stylometry-only grouped CV; it has not run.

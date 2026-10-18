@@ -109,3 +109,36 @@ Append subsequent changes with: timestamp, hypothesis, command/config, OOF BA, c
   Added verified OOF comparison with 10000 paired prompt-cluster bootstrap draws.
 - Pretraining full suite: 90 passed in 23.89 s. Both new/updated CLI help paths
   pass. No real P2 training has occurred at this entry; results follow separately.
+
+## 2026-10-18 — P2 Word-only main run
+
+- Hypothesis: deleting the character block decreases BA. Measured OOF BA **0.273733532189908**, delta **-0.042605021128511** versus P0. All five folds decrease. Paired prompt-bootstrap 95% delta CI [-0.054814814815, -0.030387770321] (10000 draws, seed 42).
+- CV 6.813215s; final fit 1.569287s; total before manifest 9.026583s. OS peak RSS 336162816 bytes; model 3718594 bytes; CPU only.
+- Confusion/recalls, full per-fold results, paired comparison, config/manifest/OOF hashes and exact commands saved in reports/p2_20261018_word_run1. Word-only does not qualify to replace P0. Character-only and repeat runs still pending; no tuning.
+
+## 2026-10-18 — P2 Character-only main run
+
+- Hypothesis: deleting the word block decreases BA. Measured OOF BA **0.313375590355456**, delta **-0.002962962962963** versus P0. 2/5 folds improve. Paired prompt-bootstrap 95% delta CI [-0.015935930897, 0.010000125125] (10000 draws, seed 42); interval includes zero, so evidence does not establish a consistent contribution of the word block.
+- CV 38.739072s; final fit 10.289701s; total before manifest 50.186846s. OS peak RSS 574623744 bytes; model 8263159 bytes; CPU only.
+- No ablation qualifies to replace P0. In the highest measured BA model (P0), all four specified weak classes still have recall<0.30 and related confusion partners persist. Stylometry-only meets the preregistered need criterion as a separate next experiment; not trained in this phase. Exact repeats remain pending.
+
+## 2026-10-18 — P2 Word-only exact repeat
+
+- Same-config/fold/seed repeat BA 0.273733532189908; delta vs P0 -0.042605021128511. CV 6.791762s, final fit 1.575781s, total 8.991421s; OS peak RSS 336605184 bytes.
+- Independent verifier confirms all OOF/per-fold metrics, identical predictions/confusion, probability max difference 0.0 and same model SHA256. Saved-model parquet and actual local-path Kaggle template agree. Repeat paired intervals match the first run; this is determinism evidence, not a new validation split. See reports/p2_20261018_word_reproduction_check.json. Character-only repeat follows.
+
+## 2026-10-18 — P2 Character-only exact repeat and final evaluation
+
+- Repeat BA 0.313375590355456; delta vs P0 -0.002962962962963. CV 38.577895s, final fit 10.147940s, total 49.880021s; OS peak RSS 576126976 bytes.
+- Independent verifier confirms identical probabilities (max difference 0.0), class/fold confusion/BA and model hash. Local saved-model/template parquet smoke passes. Repeat paired bootstrap results equal the main run, with no new statistical evidence.
+- All four trained runs and comparisons logged. Consolidated experiment/fold/class tables and full confusion/delta matrices are in reports/p2_20261018_summary. P0 remains selected. Next recommendation: separately preregister stylometry-only; no transformer or extra feature experiment run.
+
+## 2026-10-18 — P2 final artifact verification
+
+- `reports/p2_20261018_final_checks.json` records passed artifact/data/config/fold
+  checks for all four P2 runs, independent metric recomputation, exact repeat
+  equality and preservation of the P0 references. Source and tests are unchanged
+  since the 90-test pretraining check and implementation commit `83548ac`.
+- Verified private raw data, OOF/folds and model files remain ignored by Git.
+  Final documentation and aggregate reports are prepared as a separate local
+  results commit; no publication or leaderboard submission is performed.
