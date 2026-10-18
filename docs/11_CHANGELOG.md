@@ -157,3 +157,14 @@ Append subsequent changes with: timestamp, hypothesis, command/config, OOF BA, c
 - Primary hypothesis: strictly positive recall delta in at least two of four
   weak focus classes. Global promotion separately requires positive delta,
   improvement on at least four folds and positive 95% delta interval.
+
+## 2026-10-19 — P3 implementation and pretraining tests
+
+- Added separate P3 modules and CLI entrypoints, leaving P0/P2 source unchanged.
+  Fixed 81-feature extractor plus fold-local StandardScaler/LogisticRegression;
+  guards enforce the preregistered model and identical P0 evaluation controls.
+- Full suite **144 passed in 20.22s**. New CLI help checks pass; independent
+  review found no blocking leakage/provenance/statistical issues. Training,
+  scaler isolation and repeat packaging were exercised only on synthetic data.
+- Source/config will be frozen in the next implementation commit before both
+  real-data runs. No P3 score, transformer training or leaderboard claim yet.

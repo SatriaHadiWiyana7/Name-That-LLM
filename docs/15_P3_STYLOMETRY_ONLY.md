@@ -115,3 +115,22 @@ each run. Keep row-level OOF/folds and checkpoints private/ignored by Git.
 Conclude with one P4 ModernBERT fold0 GPU benchmark recommendation, informed by
 P3 outcomes and the existing P1 synthetic CUDA check. Verify official license/
 architecture requirements; encoder throughput/VRAM remain unmeasured in P3.
+
+## Implementation milestone — 2026-10-19
+
+The initial plan above is immutable in reports/p3_20261018_plan.json and commit
+ce8556b. Run IDs retain its 20261018 prefix; continuation uses the updated client
+date. Preflight passed for all six P0/P2 runs; 109 protected existing files were
+snapshotted. No P0/P2 source, configuration, report or artifact was modified.
+
+Separate P3 extractor, guarded trainer and comparison entrypoints implement the
+81-feature specification. Full pretraining suite: **144 passed in 20.22 s**;
+see reports/p3_20261018_pretraining_tests.json. Both new CLI help entrypoints
+pass. Tests include exact feature semantics, Unicode, empty/iterator inputs,
+training-only scaler statistics, 18-label probabilities, serialization, full
+synthetic grouped runs, output protection, provenance drift and nonconvergence.
+
+Each run records scaler means/variances/counts, convergence iterations/warnings
+and a deterministic importable source ZIP for future offline inference. Budget
+checks occur after completed folds/refit; they do not interrupt an active fit
+asynchronously. No competition-data P3 fit has occurred at this milestone.

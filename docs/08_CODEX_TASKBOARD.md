@@ -62,7 +62,7 @@ reports/p3_20261018_plan.json plan snapshot, written before coding/training.
 - [x] Read P0/P2 evidence; audit six runs, data/folds/environment and integrity.
 - [x] Preregister 81 numeric features, fold-local scaler, classifier, two repeats,
   10000 paired prompt-bootstrap draws and existing promotion criteria.
-- [ ] Implement and test extractor, isolation, guarded trainer/comparison.
+- [x] Implement and test extractor, isolation, guarded trainer/comparison; 144 tests pass.
 - [ ] Execute two fixed-config five-fold runs and verify reproducibility.
 - [ ] Report class/confusion/resource results; retain/promote using fixed gate.
 - [ ] Recommend P4 ModernBERT one-fold GPU benchmark; no transformer in P3.

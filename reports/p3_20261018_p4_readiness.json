@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "client_date_at_write": "2026-10-19",
+  "timezone": "Asia/Jakarta",
+  "status": "read_only_inventory_and_future_recommendation",
+  "scope": "P3 records a recommendation for P4 only. No transformer training, package installation, checkpoint download, or benchmark rerun was performed by this readiness task.",
+  "observation_time": {
+    "precise_timestamp_available": false,
+    "note": "Live dependency/GPU observations and official source browsing occurred earlier in this session. Exact capture timestamps were not recorded; report creation time does not timestamp those observations."
+  },
+  "inspected_project_sources": [
+    "AGENTS.md",
+    "docs/02_COMPETITION_RULES.md",
+    "docs/13_LOCAL_P0_REPRODUCTION.md",
+    "docs/14_P2_CONTROLLED_FEATURE_ABLATION.md",
+    "reports/p1_20261018_gpu_benchmark.json"
+  ],
+  "measured_or_observed": {
+    "existing_p1_benchmark": {
+      "provenance": "Read existing reports/p1_20261018_gpu_benchmark.json; not rerun for P3.",
+      "created_at_utc": "2026-10-18T09:33:58.762722+00:00",
+      "status": "passed",
+      "python_executable": "C:\\Users\\Komputer\\miniconda3\\envs\\gpu_test\\python.exe",
+      "python": "3.11.14",
+      "torch": "2.9.1+cu128",
+      "cuda_build": "12.8",
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "capability": [
+        12,
+        0
+      ],
+      "compiled_arch_list_contains": "sm_120",
+      "bf16_supported": true,
+      "driver": "610.88",
+      "workload": "100 float32 1024x1024 matmul/backward steps after 10 warmup steps; no optimizer steps.",
+      "elapsed_measured_seconds": 0.0734684000017296,
+      "total_elapsed_seconds": 4.600068799998553,
+      "peak_allocated_vram_bytes": 92277760,
+      "peak_reserved_vram_bytes": 113246208,
+      "all_losses_and_gradients_finite": true,
+      "interpretation": "Synthetic CUDA kernel readiness only. ModernBERT forward/backward, exact attention backend compatibility, encoder throughput, attribution BA and encoder VRAM remain unmeasured."
+    },
+    "dependency_inventory": {
+      "python_executable": "C:\\Users\\Komputer\\miniconda3\\envs\\gpu_test\\python.exe",
+      "command": "& 'C:\\Users\\Komputer\\miniconda3\\envs\\gpu_test\\python.exe' -c \"import importlib.metadata as m, json; print(json.dumps({p:next((d.version for d in m.distributions() if d.metadata['Name'].lower()==p.lower()),None) for p in ['torch','transformers','tokenizers','accelerate','safetensors','flash-attn','triton','numpy']},indent=2))\"",
+      "exit_code": 0,
+      "versions": {
+        "torch": "2.9.1+cu128",
+        "transformers": null,
+        "tokenizers": null,
+        "accelerate": null,
+        "safetensors": null,
+        "flash-attn": null,
+        "triton": null,
+        "numpy": "2.3.5"
+      },
+      "null_meaning": "No installed distribution with the queried case-insensitive distribution name was found.",
+      "changes_performed": []
+    },
+    "live_gpu_inventory": {
+      "command": "nvidia-smi --query-gpu=index,name,driver_version,memory.total,memory.used --format=csv,noheader,nounits",
+      "exit_code": 0,
+      "stdout": "0, NVIDIA GeForce RTX 5060 Ti, 610.88, 16311, 1298",
+      "gpu_index": 0,
+      "name": "NVIDIA GeForce RTX 5060 Ti",
+      "driver": "610.88",
+      "memory_total_mib": 16311,
+      "memory_used_mib": 1298,
+      "note": "Point-in-time observation earlier in session; memory use is transient and not an encoder memory measurement."
+    }
+  },
+  "official_sources": [
+    {
+      "url": "https://huggingface.co/answerdotai/ModernBERT-base",
+      "retrieval": "Read with web.open earlier in this session; exact access timestamp not retained.",
+      "supported_facts": [
+        "ModernBERT-base has 149 million parameters and 22 layers.",
+        "Native maximum context is 8192 tokens.",
+        "Model card declares Apache-2.0 for architecture, model weights and training code.",
+        "Model card states Transformers support starting at version 4.48.0.",
+        "Pretraining focuses on English and code; downstream attribution improvement is unmeasured here."
+      ]
+    },
+    {
+      "url": "https://huggingface.co/docs/transformers/model_doc/modernbert",
+      "retrieval": "Read with web.open/find earlier in this session; exact access timestamp not retained.",
+      "supported_facts": [
+        "ModernBertForSequenceClassification is available.",
+        "SDPA is supported.",
+        "Padding-free training/inference requires explicit flash_attention_2."
+      ]
+    },
+    {
+      "url": "https://github.com/huggingface/transformers/blob/main/src/transformers/models/modernbert/modeling_modernbert.py",
+      "inspected_url": "https://raw.githubusercontent.com/huggingface/transformers/main/src/transformers/models/modernbert/modeling_modernbert.py",
+      "retrieval": "Official upstream implementation read earlier in session; main is mutable and must not be used as an immutable reproduction reference.",
+      "supported_facts": [
+        "Implementation includes an SDPA path when external FlashAttention is absent."
+      ]
+    },
+    {
+      "url": "https://huggingface.co/answerdotai/ModernBERT-base/raw/main/config.json",
+      "retrieval": "Official checkpoint configuration read earlier in session; main is mutable.",
+      "supported_facts": [
+        "Checkpoint configuration specifies mean classifier pooling, 22 layers and maximum 8192 positions."
+      ]
+    },
+    {
+      "url": "https://huggingface.co/docs/transformers/installation",
+      "retrieval": "Read with web.open/find earlier in this session; exact access timestamp not retained.",
+      "supported_facts": [
+        "Current documentation states testing with Python 3.10+ and PyTorch 2.6+.",
+        "HF_HUB_OFFLINE=1 and local_files_only=True support offline loading.",
+        "A specific revision and locally cached files should be retained for reproducible offline use."
+      ]
+    }
+  ],
+  "future_p4_proposal_not_executed": {
+    "status": "recommendation_only_not_a_training_authorization_or_completed_experiment",
+    "main_hypothesis": "ModernBERT-base can complete one 18-class prompt-held-out fold with finite loss/gradients within the proposed resource limits.",
+    "secondary_hypothesis": "The preset final checkpoint improves BA over P0 on the same fold 0; one-fold results cannot replace the five-fold P0 baseline.",
+    "basis": "P2 retained P0 and weak-class confusion remained. Parent P3 report should incorporate newly measured P3 findings when explaining this recommendation.",
+    "environment": {
+      "policy": "Create a separate versioned GPU environment after preregistration; preserve existing .venv and gpu_test.",
+      "setup_state": "Future only: no installation or model download performed.",
+      "versions": "Select, smoke-test and lock exact compatible dependencies; >=4.48.0 is the model-card support floor, not a proposed final package lock.",
+      "weights": "Freeze an immutable answerdotai/ModernBERT-base Hub revision plus all model/tokenizer/config/license file SHA256 values.",
+      "compatibility_gate": "Verify actual chosen ModernBERT backend forward/backward on sm_120. P1 synthetic success is insufficient.",
+      "compile_and_extensions": "Initial pilot uses explicit SDPA and padded batches, without custom FlashAttention, Hub kernels or torch.compile."
+    },
+    "split": {
+      "saved_fold": 0,
+      "fold_source": "reports/p0_20261018_run1/baseline_fold_assignments.csv",
+      "train_rows": 2159,
+      "train_prompt_groups": 120,
+      "validation_rows": 540,
+      "validation_prompt_groups": 30,
+      "labels": "Exactly the unchanged project LABELS order, 18 labels.",
+      "seed": 42,
+      "p0_fold0_balanced_accuracy": 0.29629629629629634,
+      "p2_character_fold0_balanced_accuracy": 0.3111111111111111,
+      "p3_fold0_balanced_accuracy": null,
+      "p3_score_note": "Not copied into this readiness task; use the independently verified P3 result in the parent report.",
+      "official_p0_aggregate_balanced_accuracy": 0.31633855331841904,
+      "comparison_rule": "Compare candidate fold 0 against P0 fold 0, never describe the one-fold metric as aggregate five-fold OOF."
+    },
+    "fixed_training_candidate": {
+      "model": "answerdotai/ModernBERT-base",
+      "classification_labels": 18,
+      "classifier_pooling": "mean",
+      "preprocessing": "Original text, no paraphrasing or normalization; fixed first-token truncation and report truncation rates.",
+      "max_length": 512,
+      "padding": "dynamic within each batch",
+      "microbatch_size": 2,
+      "gradient_accumulation_steps": 8,
+      "effective_batch_size": 16,
+      "epochs": 3,
+      "optimizer": "AdamW",
+      "learning_rate": 2e-05,
+      "weight_decay": 0.01,
+      "warmup_ratio": 0.1,
+      "max_gradient_norm": 1,
+      "loss": "Cross-entropy, balanced class weights computed from training fold counts only.",
+      "precision": "BF16 autocast with FP32 parameters and optimizer state.",
+      "evaluation": "Preset final checkpoint only; no epoch selection, early stopping, calibration, class offsets or ensemble optimization using fold 0 validation."
+    },
+    "resource_limits_proposed_not_measured": {
+      "smoke_warmup_optimizer_steps": 10,
+      "smoke_measured_optimizer_steps": 50,
+      "smoke_data": "Training-fold rows only.",
+      "reset_after_smoke": "Reload initial pretrained checkpoint, reset RNG and optimizer before the scored run.",
+      "smoke_wall_limit_minutes": 10,
+      "fit_and_evaluation_wall_limit_minutes": 45,
+      "max_allocated_vram_gib": 12,
+      "max_reserved_vram_gib": 14,
+      "stop_conditions": [
+        "OOM",
+        "nonfinite loss or gradients",
+        "unsupported kernel",
+        "resource or wall-time limit exceeded"
+      ],
+      "on_failure": "Preserve partial diagnostics and record failure; changed batch/backend requires a separately identified documented run, not silent retries.",
+      "distinction": "These are proposed stopping limits, not measured ModernBERT costs or speed forecasts."
+    },
+    "evaluation_and_recording": [
+      "Save validation ids/prompt_ids/labels/fold and ordered 18-class probabilities/predictions.",
+      "Record BA, all class recalls and confusion matrices against identical fold 0 P0.",
+      "If paired bootstrap is used, resample the 30 validation prompt groups, not rows or all 150 prompts.",
+      "Record tokenizer, loading, training and inference timings; tokens/second; peak allocated/reserved VRAM; RSS; checkpoint bytes.",
+      "Record exact command, versions, backend, determinism settings, seed and source/config/data/fold/model/artifact hashes.",
+      "One fold cannot satisfy the established positive-global-delta, >=4/5-positive-folds and positive paired-CI promotion rule."
+    ],
+    "offline_packaging_gates": [
+      "Verify current competition rules and exact checkpoint/tokenizer/dependency licensing before external model use.",
+      "Save immutable model/config/tokenizer/label map/license assets and compatible Linux/Kaggle dependency wheels.",
+      "Test local_files_only=True and HF_HUB_OFFLINE=1 in a clean offline loading/inference smoke test.",
+      "Measure end-to-end inference including tokenization and compare with the competition 9-hour runtime limit.",
+      "Kaggle notebook must predict from the actual test.csv and write valid submission.parquet; no precomputed hidden predictions.",
+      "No public/private leaderboard score, rank, Top 5/Top 10 cutoff or gain is established by these checks; 0.547 remains unverified context."
+    ]
+  },
+  "report_written_at_utc": "2026-10-18T22:06:02.369088+00:00"
+}

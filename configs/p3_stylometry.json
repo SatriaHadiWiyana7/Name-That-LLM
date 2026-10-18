@@ -1,0 +1,8 @@
+{
+  "name": "stylometry_logreg_v1",
+  "random_seed": 42,
+  "n_splits": 5,
+  "features": {"schema_version": 1},
+  "scaler": {"with_mean": true, "with_std": true},
+  "classifier": {"C": 3.0, "max_iter": 1200, "class_weight": "balanced", "solver": "lbfgs", "tol": 0.0001}
+}
