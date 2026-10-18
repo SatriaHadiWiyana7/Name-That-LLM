@@ -1,0 +1,56 @@
+{
+  "utc_created": "2026-10-18T09:33:31.722227+00:00",
+  "status": "passed",
+  "argv": [
+    "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+    "scripts/verify_reproduction.py",
+    "--first-manifest",
+    "artifacts/p0_20261018_run1/manifest.json",
+    "--second-manifest",
+    "artifacts/p0_20261018_run2/manifest.json",
+    "--local-submission",
+    "reports/p0_20261018_run1/local_demo_submission.parquet",
+    "--smoke-output",
+    "reports/p0_20261018_run1/kaggle_template_smoke.parquet",
+    "--output",
+    "reports/p0_20261018_reproduction_check.json"
+  ],
+  "source_sha256": "5b39f8b159f886d41c779cb99c0f0b5b422337467e4ffc4ad27f79cbe490106a",
+  "manifest_sha256": {
+    "artifacts/p0_20261018_run1/manifest.json": "0aa526875461eb9594445ac8c0c98130879f98cfe687b79f0b1adf642576a115",
+    "artifacts/p0_20261018_run2/manifest.json": "1371c624c40c62a74e02749da0b749b2ad3b52dc6801d7eefb71631d319673e4"
+  },
+  "rows": 2699,
+  "prompts": 150,
+  "balanced_accuracy": 0.31633855331841904,
+  "delta_balanced_accuracy": 0.0,
+  "all_artifact_hashes_verified": true,
+  "all_stored_metrics_recomputed": true,
+  "same_dataset_folds_seed_config": true,
+  "same_predictions_and_confusion": true,
+  "max_probability_abs_difference": 0.0,
+  "probability_tolerance": 1e-12,
+  "serialized_model_hashes_equal": true,
+  "model_sha256": "04ae12aec9996cebb95ed2e31dd96ddb32bdf31557d96641a222f7c3415ef324",
+  "template_smoke": {
+    "rows": 3,
+    "schema_valid": true,
+    "matches_local_predictions": true,
+    "template_sha256": "d5e7f9709e4aaf0108a9c0e22cc46ec03e9101a5856744f56751f1dc1e633f7a",
+    "test_sha256": "4545aa3a3459f4c0724f97ad5bd06c4caa3506bdfea5fab905e8203184fc0c57",
+    "output_sha256": "fefc915ec2ed12ece2679b2e03dc66d4f0f02d86d659ee775299f0e219b96334",
+    "scope": "Local path-substituted template on sample test, not Kaggle hidden rerun"
+  },
+  "resources": {
+    "wall_seconds": 0.76724,
+    "cpu_seconds": 0.71875,
+    "peak_rss_sampled_bytes": 210714624,
+    "rss_sampling_interval_seconds": 0.05,
+    "rss_sample_count": 13,
+    "os_peak_rss_bytes": 217059328,
+    "os_peak_rss_scope": "process lifetime, not isolated to this phase",
+    "gpu_used": false,
+    "peak_vram_bytes": null,
+    "gpu_note": "CPU scikit-learn pipeline; GPU process memory was not measured"
+  }
+}

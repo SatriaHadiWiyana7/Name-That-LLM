@@ -1,0 +1,106 @@
+{
+  "train_rows": 2699,
+  "test_example_rows": 3,
+  "num_prompts": 150,
+  "labels": 18,
+  "missing_prompt_model_pairs": [
+    [
+      "p002",
+      "claude-fable-5"
+    ]
+  ],
+  "complete_prompts": 149,
+  "word_mean": 115.29,
+  "word_median": 102.0,
+  "word_min": 36,
+  "word_max": 271,
+  "duplicate_text": 0,
+  "utc_created": "2026-10-18T00:36:38.853072+00:00",
+  "argv": [
+    "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+    "scripts/audit_dataset.py",
+    "--archive",
+    "C:/Users/Komputer/Downloads/name-that-llm-dataset.zip",
+    "--output",
+    "reports/p0_20261018_dataset_audit.json"
+  ],
+  "source_sha256": "1c094630b12c8a1100bc28067bd921333fccaef6e1ce3ae3fd1be141dfa7ebc6",
+  "dataset_sha256": "40a22ce8d88c5f46feb4637a099db815bef5f713ffe53e89dbe1b7b21de77707",
+  "test_sha256": "4545aa3a3459f4c0724f97ad5bd06c4caa3506bdfea5fab905e8203184fc0c57",
+  "label_order": [
+    "claude-fable-5",
+    "claude-opus-4-6",
+    "claude-opus-4-8",
+    "claude-opus-5",
+    "claude-sonnet-5",
+    "gemini-3.1-pro-preview",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.8-flash",
+    "glm-5.3",
+    "glm-5.3-flash",
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-6-astra",
+    "kimi-k3",
+    "qwen3.8-max"
+  ],
+  "class_counts": {
+    "claude-fable-5": 149,
+    "claude-opus-4-6": 150,
+    "claude-opus-4-8": 150,
+    "claude-opus-5": 150,
+    "claude-sonnet-5": 150,
+    "gemini-3.1-pro-preview": 150,
+    "gemini-3.6-flash": 150,
+    "gemini-3.7-flash": 150,
+    "gemini-3.8-flash": 150,
+    "glm-5.3": 150,
+    "glm-5.3-flash": 150,
+    "gpt-5.5": 150,
+    "gpt-5.6-luna": 150,
+    "gpt-5.6-sol": 150,
+    "gpt-5.6-terra": 150,
+    "gpt-6-astra": 150,
+    "kimi-k3": 150,
+    "qwen3.8-max": 150
+  },
+  "prompt_response_counts": {
+    "18": 149,
+    "17": 1
+  },
+  "below_40_words": 12,
+  "above_250_words": 25,
+  "mean_prompt_word_spread": 184.95,
+  "word_regex": "\\b[\\w]+(?:['’\\-][\\w]+)*\\b",
+  "duplicate_train_ids": 0,
+  "duplicate_prompt_model": 0,
+  "null_train_fields": {
+    "id": 0,
+    "prompt_id": 0,
+    "text": 0,
+    "model": 0
+  },
+  "train_test_id_overlap": 0,
+  "nontrimmed_train_text": 0,
+  "punctuation_presence_pct": {
+    "em_dash": 38.98,
+    "semicolon": 38.68,
+    "colon": 52.13,
+    "newline": 0.0,
+    "tab": 0.0,
+    "nonascii": 57.84
+  },
+  "original_archive": {
+    "sha256": "7c375db7dfeea6b36cefc7b48a290dd48c54c7fe03bfd402390728a6a2bb9386",
+    "members_sha256": {
+      "train.csv": "40a22ce8d88c5f46feb4637a099db815bef5f713ffe53e89dbe1b7b21de77707",
+      "test.csv": "4545aa3a3459f4c0724f97ad5bd06c4caa3506bdfea5fab905e8203184fc0c57",
+      "sample_submission.parquet": "ccf86796b80fd7f83d8463664603fd1208e17559abcf416f198776b819646188"
+    },
+    "train_matches": true,
+    "test_matches": true
+  }
+}

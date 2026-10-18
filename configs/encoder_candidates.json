@@ -1,0 +1,54 @@
+{
+  "status": "PLANNING ONLY; implement after GPU preflight",
+  "candidates": [
+    {
+      "name": "modernbert_base",
+      "model_id": "answerdotai/ModernBERT-base",
+      "checkpoint_revision": "pin_me",
+      "max_length_trials": [
+        256,
+        384
+      ],
+      "batch_trials": [
+        8,
+        16
+      ],
+      "learning_rates": [
+        1e-05,
+        2e-05,
+        3e-05
+      ],
+      "epochs": [
+        3,
+        4,
+        6
+      ],
+      "precision": "bf16_if_available"
+    },
+    {
+      "name": "deberta_v3_base",
+      "model_id": "microsoft/deberta-v3-base",
+      "checkpoint_revision": "pin_me",
+      "max_length_trials": [
+        256,
+        384
+      ],
+      "batch_trials": [
+        8
+      ],
+      "learning_rates": [
+        1e-05,
+        2e-05
+      ],
+      "epochs": [
+        3,
+        4,
+        6
+      ],
+      "precision": "bf16_if_available"
+    }
+  ],
+  "group_cv": 5,
+  "seed": 42,
+  "notes": "VRAM/time numbers are provisional; run single-fold measured benchmark first. Verify licenses and package CUDA support."
+}

@@ -1,0 +1,169 @@
+{
+  "utc_created": "2026-10-18T09:36:36.408956+00:00",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "unit_tests",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "returncode": 0,
+      "seconds": 5.544036199997208,
+      "stdout": "...............................                                          [100%]\n31 passed in 5.08s\n",
+      "stderr": ""
+    },
+    {
+      "check": "dependencies",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "returncode": 0,
+      "seconds": 0.9372814999987895,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:analyze_oof.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\analyze_oof.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 1.5762834999986808,
+      "stdout": "usage: analyze_oof.py [-h] [--oof OOF] [--output OUTPUT] [--train TRAIN]\n                      [--bootstrap-repeats BOOTSTRAP_REPEATS] [--seed SEED]\n\nValidate OOF outputs and save aggregate diagnostics without passages.\n\noptions:\n  -h, --help            show this help message and exit\n  --oof OOF\n  --output OUTPUT       New JSON path for aggregate diagnostics; existing\n                        files are preserved\n  --train TRAIN         Optional training CSV for word-length quartile\n                        diagnostics\n  --bootstrap-repeats BOOTSTRAP_REPEATS\n  --seed SEED\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:audit_dataset.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\audit_dataset.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 0.5852347000000009,
+      "stdout": "usage: audit_dataset.py [-h] [--train TRAIN] [--test TEST] [--archive ARCHIVE]\n                        [--output OUTPUT]\n\noptions:\n  -h, --help         show this help message and exit\n  --train TRAIN\n  --test TEST\n  --archive ARCHIVE  Original user-owned ZIP for byte comparison\n  --output OUTPUT    Write aggregate JSON, without passages\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:check_gpu.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\check_gpu.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 0.11603280000053928,
+      "stdout": "usage: check_gpu.py [-h] [--steps STEPS] [--size SIZE] [--warmup WARMUP]\n                    [--seed SEED] [--output OUTPUT]\n\nOffline CUDA inspection and a small deterministic matmul/backward benchmark.\nThe default remains a one-step GPU check. For the P1 readiness gate, use\n--steps 100 --size 1024 --warmup 10 --seed 42 --output <new-report.json>. No\nproject imports, downloads, pretrained models, or package installs are used.\n\noptions:\n  -h, --help       show this help message and exit\n  --steps STEPS\n  --size SIZE\n  --warmup WARMUP\n  --seed SEED\n  --output OUTPUT  New JSON report path; existing reports are never\n                   overwritten.\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:predict_local.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\predict_local.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 0.668718799999624,
+      "stdout": "usage: predict_local.py [-h] [--model MODEL] [--test TEST] [--output OUTPUT]\n\noptions:\n  -h, --help       show this help message and exit\n  --model MODEL\n  --test TEST\n  --output OUTPUT\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:prepare_data.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\prepare_data.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 0.07244540000101551,
+      "stdout": "usage: prepare_data.py [-h] --zip ARCHIVE [--out OUT]\n\nSafely extract ONLY the named competition dataset files from user-owned ZIP.\n\noptions:\n  -h, --help     show this help message and exit\n  --zip ARCHIVE\n  --out OUT\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:record_score.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\record_score.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 0.06808050000108778,
+      "stdout": "usage: record_score.py [-h] [--score SCORE]\n                       [--source {user_reported,own_submission,leaderboard_cutoff,local_oof}]\n                       [--split {unknown,public,private,oof}]\n                       [--model-id MODEL_ID] [--rank RANK]\n                       [--cutoff-kind {,top5,top10}] [--notes NOTES]\n                       [--file FILE] [--report]\n\nAppend external score updates. Does not fabricate score ownership, leaderboard\nor rank.\n\noptions:\n  -h, --help            show this help message and exit\n  --score SCORE\n  --source {user_reported,own_submission,leaderboard_cutoff,local_oof}\n  --split {unknown,public,private,oof}\n  --model-id MODEL_ID\n  --rank RANK\n  --cutoff-kind {,top5,top10}\n  --notes NOTES\n  --file FILE\n  --report\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:train_baseline.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\train_baseline.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 1.6145508000008704,
+      "stdout": "usage: train_baseline.py [-h] [--train TRAIN] [--config CONFIG] [--out OUT]\n                         [--reports REPORTS] [--run-id RUN_ID] [--folds FOLDS]\n                         [--register REGISTER]\n                         [--environment-report ENVIRONMENT_REPORT]\n                         [--reference-metrics REFERENCE_METRICS]\n\nPrompt-grouped OOF baseline with measured resources and a full-train artifact.\n\noptions:\n  -h, --help            show this help message and exit\n  --train TRAIN\n  --config CONFIG\n  --out OUT\n  --reports REPORTS\n  --run-id RUN_ID       Unique experiment/model ID; defaults to config name\n  --folds FOLDS         Reuse a complete id,prompt_id,fold CSV\n  --register REGISTER\n  --environment-report ENVIRONMENT_REPORT\n                        Optional local hardware audit JSON\n  --reference-metrics REFERENCE_METRICS\n                        Reference metrics; missing provenance means historical\n                        numerical difference only\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:validate_submission.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\validate_submission.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 0.6090890000014042,
+      "stdout": "usage: validate_submission.py [-h] --test TEST --submission SUBMISSION\n\noptions:\n  -h, --help            show this help message and exit\n  --test TEST\n  --submission SUBMISSION\n",
+      "stderr": ""
+    },
+    {
+      "check": "cli_help:verify_reproduction.py",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts\\verify_reproduction.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "seconds": 1.5803059999998368,
+      "stdout": "usage: verify_reproduction.py [-h] --first-manifest FIRST_MANIFEST\n                              --second-manifest SECOND_MANIFEST [--test TEST]\n                              --local-submission LOCAL_SUBMISSION\n                              [--template TEMPLATE]\n                              --smoke-output SMOKE_OUTPUT --output OUTPUT\n\nIndependently verify two saved baseline runs and smoke-test the Kaggle\ntemplate.\n\noptions:\n  -h, --help            show this help message and exit\n  --first-manifest FIRST_MANIFEST\n  --second-manifest SECOND_MANIFEST\n  --test TEST\n  --local-submission LOCAL_SUBMISSION\n  --template TEMPLATE\n  --smoke-output SMOKE_OUTPUT\n  --output OUTPUT\n",
+      "stderr": ""
+    },
+    {
+      "check": "score_log_report",
+      "argv": [
+        "C:\\MY_FOLDER\\CODE\\Name-That-LLM\\.venv\\Scripts\\python.exe",
+        "scripts/record_score.py",
+        "--report"
+      ],
+      "returncode": 0,
+      "seconds": 0.06828750000204309,
+      "stdout": "Score events: 1\n2026-10-16T17:00:00 user_reported unknown score= 0.547000 rank= ? model= reference_only\n",
+      "stderr": ""
+    }
+  ],
+  "private_outputs_ignored": [
+    "data/raw/train.csv",
+    "data/raw/test.csv",
+    "data/processed/p0_original_zip/train.csv",
+    "artifacts/p0_20261018_run1/model.joblib",
+    "reports/p0_20261018_run1/baseline_oof.csv",
+    "reports/p0_20261018_run1/baseline_fold_assignments.csv",
+    "reports/p0_20261018_run1/local_demo_submission.parquet"
+  ],
+  "historical_metrics_preserved_sha256": "7bdfa6bf482ef837c18e360aeb3577dc57b31be8ae0375fe321192080c9abdeb",
+  "test_file_sha256": {
+    "tests\\test_analysis.py": "a57258a8a4317883d35609bd4bb3f3517e493174ee407995f818aab878c114d3",
+    "tests\\test_baseline_runtime.py": "5565d2a8afcf8a793706dd7150165b89b56643fea5fd6a1cec86a30e2bf12ad3",
+    "tests\\test_metrics.py": "aae65cdd5308735683c3c8bdefba63f7d9b580e1d7238ebe38bf0c249c713740",
+    "tests\\test_splits.py": "70bf5ebfb6a450e0ea152964b54c76996cb8e3ee4696fa116e09b27928049030",
+    "tests\\test_submission.py": "198a3077e2382c98969db133ba372c49e9f51b6229cfd5da59130abc9de5f20a"
+  }
+}

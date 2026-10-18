@@ -1,0 +1,133 @@
+{
+  "shape": {
+    "train": [
+      2699,
+      4
+    ],
+    "test": [
+      3,
+      2
+    ]
+  },
+  "labels": [
+    "claude-fable-5",
+    "claude-opus-4-6",
+    "claude-opus-4-8",
+    "claude-opus-5",
+    "claude-sonnet-5",
+    "gemini-3.1-pro-preview",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.8-flash",
+    "glm-5.3",
+    "glm-5.3-flash",
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-6-astra",
+    "kimi-k3",
+    "qwen3.8-max"
+  ],
+  "class_counts": {
+    "qwen3.8-max": 150,
+    "claude-sonnet-5": 150,
+    "gemini-3.6-flash": 150,
+    "gpt-5.6-terra": 150,
+    "glm-5.3-flash": 150,
+    "gemini-3.1-pro-preview": 150,
+    "gemini-3.8-flash": 150,
+    "claude-opus-4-6": 150,
+    "gpt-5.6-luna": 150,
+    "claude-opus-4-8": 150,
+    "gemini-3.7-flash": 150,
+    "claude-fable-5": 149,
+    "claude-opus-5": 150,
+    "kimi-k3": 150,
+    "gpt-5.5": 150,
+    "gpt-6-astra": 150,
+    "glm-5.3": 150,
+    "gpt-5.6-sol": 150
+  },
+  "unique_prompt_ids": 150,
+  "prompt_response_counts": {
+    "18": 149,
+    "17": 1
+  },
+  "missing_prompt_model_pairs": [
+    [
+      "p002",
+      "claude-fable-5"
+    ]
+  ],
+  "quality": {
+    "missing_columns": {
+      "id": 0,
+      "prompt_id": 0,
+      "text": 0,
+      "model": 0
+    },
+    "duplicate_id": 0,
+    "duplicate_exact_text": 0,
+    "duplicate_normalized_text": 0,
+    "nontrimmed_text": 0,
+    "duplicate_prompt_model": 0,
+    "train_id_overlap_test": 0
+  },
+  "length_words_regex": {
+    "n": 2699,
+    "mean": 115.29,
+    "std": 58.49,
+    "median": 102.0,
+    "min": 36,
+    "p05": 45.0,
+    "p10": 49.0,
+    "p25": 65.0,
+    "p75": 158.5,
+    "p90": 207.0,
+    "p95": 226.0,
+    "max": 271
+  },
+  "prompt_word_spread": {
+    "n": 150,
+    "mean": 184.95,
+    "std": 22.14,
+    "median": 187.0,
+    "min": 109,
+    "p05": 146.45,
+    "p10": 155.8,
+    "p25": 172.0,
+    "p75": 201.75,
+    "p90": 211.0,
+    "p95": 217.55,
+    "max": 227
+  },
+  "formatting_rates_pct": {
+    "dash": 38.98,
+    "semicolon": 38.68,
+    "colon": 52.13,
+    "question": 3.11,
+    "parens": 1.07,
+    "newline": 0.0,
+    "bullet": 0.0,
+    "markdown": 0.0,
+    "quote": 7.48,
+    "exclamation": 0.3,
+    "digit": 9.89,
+    "nonascii": 57.84
+  },
+  "matched_prompt_tfidf_cosine": {
+    "same_prompt": {
+      "mean": 0.166,
+      "median": 0.157,
+      "p10": 0.084,
+      "p90": 0.259
+    },
+    "different_prompt": {
+      "mean": 0.018,
+      "median": 0.015,
+      "p10": 0.006,
+      "p90": 0.032
+    }
+  }
+}

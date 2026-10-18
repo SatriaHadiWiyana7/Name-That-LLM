@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-18T09:33:58.762722+00:00",
+  "status": "passed",
+  "actual_forward_backward_verified": true,
+  "python": "3.11.14",
+  "python_executable": "C:\\Users\\Komputer\\miniconda3\\envs\\gpu_test\\python.exe",
+  "argv": [
+    "C:\\Users\\Komputer\\miniconda3\\envs\\gpu_test\\python.exe",
+    "scripts/check_gpu.py",
+    "--steps",
+    "100",
+    "--size",
+    "1024",
+    "--warmup",
+    "10",
+    "--seed",
+    "42",
+    "--output",
+    "reports/p1_20261018_gpu_benchmark.json"
+  ],
+  "platform": {
+    "system": "Windows",
+    "release": "10",
+    "machine": "AMD64",
+    "logical_cpu_count": 12
+  },
+  "source_sha256": "d60b1d12f6120e9b907ad9f59ee6825222a77d41882c00b62affa8034848d0a0",
+  "dependencies": {
+    "torch": "2.9.1+cu128",
+    "psutil": "7.2.1",
+    "numpy": "2.3.5"
+  },
+  "configuration": {
+    "steps": 100,
+    "size": 1024,
+    "warmup": 10,
+    "seed": 42,
+    "dtype": "float32"
+  },
+  "cpu_memory_at_start": {
+    "rss_bytes": 25546752,
+    "process_peak_rss_bytes": 25546752,
+    "source": "psutil.Process.memory_info"
+  },
+  "driver_inventory": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,name,driver_version,memory.total,memory.used",
+      "--format=csv,noheader,nounits"
+    ],
+    "returncode": 0,
+    "stdout": "0, NVIDIA GeForce RTX 5060 Ti, 610.88, 16311, 1449",
+    "stderr": ""
+  },
+  "memory_measurement_note": "GPU peaks cover measured steps after warmup reset; reserved cache may include warmup. CPU peak is OS process lifetime, not a GPU-only interval.",
+  "torch": {
+    "version": "2.9.1+cu128",
+    "cuda_build": "12.8",
+    "cuda_available": true,
+    "device_name": "NVIDIA GeForce RTX 5060 Ti",
+    "device_index": 0,
+    "capability": [
+      12,
+      0
+    ],
+    "compiled_arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "total_vram_bytes": 17102864384,
+    "bf16_supported": true,
+    "deterministic_algorithms": true,
+    "float32_matmul_precision": "highest",
+    "allow_tf32": false,
+    "cublas_workspace_config": ":4096:8"
+  },
+  "warmup_elapsed_seconds": 0.3671805999983917,
+  "cpu_memory_before_measured_steps": {
+    "rss_bytes": 1038921728,
+    "process_peak_rss_bytes": 1038921728,
+    "source": "psutil.Process.memory_info"
+  },
+  "benchmark": {
+    "completed_steps": 100,
+    "elapsed_seconds": 0.0734684000017296,
+    "steps_per_second": 1361.1294107078115,
+    "peak_allocated_vram_bytes": 92277760,
+    "peak_reserved_vram_bytes": 113246208,
+    "timing_includes": "float32 matmul, loss, backward, finite checks, and final CUDA synchronization",
+    "timing_excludes": "imports, CUDA setup, tensor initialization, warmup, and JSON writing",
+    "workload": "loss = (((x @ x) / sqrt(size)) ** 2).mean(); backward; reset gradient each step",
+    "optimizer_steps": 0,
+    "scope": "synthetic kernel readiness; not encoder throughput or attribution accuracy",
+    "all_losses_and_gradients_finite": true,
+    "last_loss": 0.9931254386901855,
+    "last_gradient_abs_max": 2.2404638002626598e-05
+  },
+  "cpu_memory_after_measured_steps": {
+    "rss_bytes": 1039003648,
+    "process_peak_rss_bytes": 1039003648,
+    "source": "psutil.Process.memory_info"
+  },
+  "total_elapsed_seconds": 4.600068799998553,
+  "cpu_memory_at_end": {
+    "rss_bytes": 1058304000,
+    "process_peak_rss_bytes": 1058304000,
+    "source": "psutil.Process.memory_info"
+  },
+  "exit_code": 0
+}

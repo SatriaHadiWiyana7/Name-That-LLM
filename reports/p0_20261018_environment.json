@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "audit_id": "p0_20261018_environment",
+  "client_date": "2026-10-18",
+  "client_timezone": "Asia/Jakarta",
+  "recorded_at_utc": "2026-10-18T00:34:38Z",
+  "observation_timing": {
+    "observed_at_utc": null,
+    "recorded_before_or_at_utc": "2026-10-18T00:34:38Z",
+    "note": "Measurements were collected earlier in this session. Exact per-command UTC observation timestamps were not captured; recorded_at_utc is the manifest creation time, not a fabricated measurement time."
+  },
+  "scope": {
+    "inventory_only": true,
+    "package_installations_performed": false,
+    "wsl_distribution_started": false,
+    "gpu_training_or_benchmark_performed": false,
+    "environment_changes_performed": false,
+    "sensitive_identifiers_omitted": [
+      "username",
+      "hostname",
+      "absolute user-profile paths",
+      "tokens"
+    ],
+    "note": "The root agent is separately preparing a repository CPU .venv. This report describes the existing environments observed before that preparation; it is not the eventual training-environment manifest."
+  },
+  "hardware": {
+    "os": {
+      "caption": "Microsoft Windows 11 Pro",
+      "version": "10.0.26200",
+      "build_number": "26200"
+    },
+    "cpu": {
+      "name": "12th Gen Intel(R) Core(TM) i5-12400F",
+      "physical_cores": 6,
+      "logical_processors": 12
+    },
+    "memory": {
+      "total_physical_bytes": 34191179776,
+      "free_physical_kib_at_observation": 17109988
+    },
+    "storage": {
+      "drive": "C",
+      "used_bytes_at_observation": 325074595840,
+      "free_bytes_at_observation": 186929668096
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 5060 Ti",
+      "driver_version": "610.74",
+      "memory_total_mib_nvidia_smi": 16311,
+      "memory_used_mib_at_observation": 1242,
+      "compute_capability_nvidia_smi": "12.0",
+      "temperature_c_at_separate_observation": 40,
+      "power_draw_w_at_separate_observation": 12.55
+    }
+  },
+  "wsl": {
+    "command_completed_without_timeout": true,
+    "timeout_seconds": 10,
+    "distributions": [
+      {
+        "name": "Ubuntu",
+        "state": "Stopped",
+        "version": 2,
+        "default": true
+      },
+      {
+        "name": "docker-desktop",
+        "state": "Stopped",
+        "version": 2,
+        "default": false
+      }
+    ],
+    "note": "Only wsl --list --verbose was run. No Linux-side Python or CUDA environment was inspected."
+  },
+  "python_inventory": {
+    "path_python": "base",
+    "py_launcher_available": false,
+    "python3_path": "<windows_user_apps>/python3.exe",
+    "repository_venv_present_at_initial_observation": false,
+    "environments": [
+      {
+        "name": "base",
+        "executable_relative_to_conda_root": "python.exe",
+        "python": "3.13.11",
+        "implementation": "CPython",
+        "distribution": "Anaconda",
+        "packages": {
+          "torch": null,
+          "numpy": "2.4.4",
+          "pandas": "2.3.3",
+          "scipy": "1.18.0",
+          "scikit-learn": "1.9.0",
+          "pytest": "9.1.1",
+          "pyarrow": "24.0.0",
+          "psutil": null,
+          "transformers": null
+        }
+      },
+      {
+        "name": "gpu_test",
+        "executable_relative_to_conda_root": "envs/gpu_test/python.exe",
+        "python": "3.11.14",
+        "implementation": "CPython",
+        "distribution": "Anaconda",
+        "packages": {
+          "torch": "2.9.1+cu128",
+          "numpy": "2.3.5",
+          "pandas": null,
+          "scipy": null,
+          "scikit-learn": null,
+          "pytest": null,
+          "pyarrow": null,
+          "psutil": "7.2.1",
+          "transformers": null
+        }
+      },
+      {
+        "name": "amor_env",
+        "executable_relative_to_conda_root": "envs/amor_env/python.exe",
+        "python": "3.12.13",
+        "implementation": "CPython",
+        "distribution": "Anaconda",
+        "packages": {
+          "torch": null,
+          "numpy": "2.4.4",
+          "pandas": "3.0.2",
+          "scipy": "1.17.1",
+          "scikit-learn": "1.8.0",
+          "pytest": null,
+          "pyarrow": null,
+          "psutil": "7.2.2",
+          "transformers": null
+        }
+      }
+    ],
+    "null_package_value_meaning": "importlib.metadata.PackageNotFoundError in that environment"
+  },
+  "torch_metadata": {
+    "environment": "gpu_test",
+    "import_succeeded": true,
+    "version": "2.9.1+cu128",
+    "cuda_build": "12.8",
+    "cuda_available": true,
+    "compiled_arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "device_name": "NVIDIA GeForce RTX 5060 Ti",
+    "device_capability": [
+      12,
+      0
+    ],
+    "total_vram_bytes": 17102864384,
+    "bf16_supported_reported": true,
+    "actual_kernel_test_status": "not_run",
+    "actual_backward_test_status": "not_run",
+    "benchmark_100_forward_backward_steps_status": "not_run",
+    "measured_peak_allocated_vram_bytes": null,
+    "measured_training_seconds": null,
+    "interpretation": "CUDA and sm_120 metadata are available. Real forward/backward operation and P1 readiness remain unverified."
+  },
+  "commands": {
+    "path_redaction_note": "Commands preserve the executed invocations and code; absolute user-profile prefixes are replaced by <conda_root> or <windows_user_apps>. No username or hostname is retained.",
+    "hardware_queries": [
+      "nvidia-smi --query-gpu=name,driver_version,memory.total,memory.used --format=csv,noheader",
+      "nvidia-smi --query-gpu=compute_cap,temperature.gpu,power.draw --format=csv,noheader",
+      "Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores,NumberOfLogicalProcessors",
+      "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,TotalVisibleMemorySize,FreePhysicalMemory",
+      "Get-PSDrive -PSProvider FileSystem | Select-Object Name,Used,Free",
+      "$osInfo = Get-CimInstance Win32_OperatingSystem; $memInfo = Get-CimInstance Win32_ComputerSystem; $driveInfo = Get-PSDrive C; [pscustomobject]@{OS=$osInfo.Caption;Version=$osInfo.Version;Build=$osInfo.BuildNumber;RAMBytes=$memInfo.TotalPhysicalMemory;FreeRAMKiB=$osInfo.FreePhysicalMemory;DiskCUsedBytes=$driveInfo.Used;DiskCFreeBytes=$driveInfo.Free} | ConvertTo-Json"
+    ],
+    "wsl_query": "$wslCheck = Start-Process -FilePath wsl.exe -ArgumentList '--list','--verbose' -WindowStyle Hidden -PassThru -RedirectStandardOutput \"$env:TEMP/namethatllm-wsl-out.txt\" -RedirectStandardError \"$env:TEMP/namethatllm-wsl-err.txt\"; if (-not $wslCheck.WaitForExit(10000)) { Stop-Process -Id $wslCheck.Id; Write-Output 'WSL list timed out after 10 seconds' }; Get-Content \"$env:TEMP/namethatllm-wsl-out.txt\"; Get-Content \"$env:TEMP/namethatllm-wsl-err.txt\"",
+    "wsl_decode": "Get-Content \"$env:TEMP/namethatllm-wsl-out.txt\" -Encoding Unicode",
+    "python_inventory": [
+      "Get-Command python,python3,py -ErrorAction SilentlyContinue | Select-Object Name,Source",
+      "py -0p",
+      "Get-ChildItem -Force -Directory | Select-Object Name",
+      "rg --files -g pyvenv.cfg -g '*requirements*' -g 'environment*.yml' -g 'pyproject.toml' -g '*.lock'",
+      "conda env list --json",
+      "Get-ChildItem '<windows_user_programs>/Python' -ErrorAction SilentlyContinue -Directory | Select-Object Name",
+      "Get-ChildItem 'C:/Program Files/Python*' -ErrorAction SilentlyContinue -Directory | Select-Object Name"
+    ],
+    "package_metadata": {
+      "invocation_by_environment": {
+        "base": "python -",
+        "gpu_test": "& '<conda_root>/envs/gpu_test/python.exe' -",
+        "amor_env": "& '<conda_root>/envs/amor_env/python.exe' -"
+      },
+      "stdin_python_base": "import sys, json, importlib.metadata as m, importlib.util as u\nnames = ['torch','numpy','pandas','scipy','scikit-learn','pytest','pyarrow','psutil','transformers']\nversions={}\nfor name in names:\n try: versions[name]=m.version(name)\n except m.PackageNotFoundError: versions[name]=None\nprint(json.dumps({'python':sys.version,'executable':sys.executable,'prefix':sys.prefix,'versions':versions},indent=2))",
+      "stdin_python_other_environments": "import sys,json,importlib.metadata as m\nout={'python':sys.version,'executable':sys.executable,'versions':{}}\nfor name in ['torch','numpy','pandas','scipy','scikit-learn','pytest','pyarrow','psutil','transformers']:\n try: out['versions'][name]=m.version(name)\n except m.PackageNotFoundError: out['versions'][name]=None\nprint(json.dumps(out,indent=2))"
+    },
+    "torch_metadata": {
+      "invocation": "& '<conda_root>/envs/gpu_test/python.exe' -",
+      "stdin_python": "import json, torch\nout={'torch':torch.__version__,'cuda_build':torch.version.cuda,'cuda_available':torch.cuda.is_available(),'compiled_arch_list':torch.cuda.get_arch_list()}\nif torch.cuda.is_available():\n out.update(device=torch.cuda.get_device_name(0),capability=torch.cuda.get_device_capability(0),vram_bytes=torch.cuda.get_device_properties(0).total_memory,bf16_supported=torch.cuda.is_bf16_supported())\nprint(json.dumps(out,indent=2))"
+    }
+  }
+}

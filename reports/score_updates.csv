@@ -1,0 +1,2 @@
+timestamp_utc,source,split,model_id,score,rank,cutoff_kind,notes
+2026-10-16T17:00:00+00:00,user_reported,unknown,reference_only,0.547000,,,Latest reported score 0.547; ownership and leaderboard split unverified

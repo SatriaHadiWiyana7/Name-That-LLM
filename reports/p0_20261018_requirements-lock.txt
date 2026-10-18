@@ -1,0 +1,21 @@
+cloudpickle==3.1.2
+colorama==0.4.6
+iniconfig==2.3.1
+joblib==1.6.0
+-e .
+numpy==2.5.4
+packaging==26.3
+pandas==2.3.3
+pip==25.3
+pluggy==1.7.0
+psutil==7.2.2
+pyarrow==26.0.0
+Pygments==2.21.0
+pytest==9.1.1
+python-dateutil==2.9.0.post0
+pytz==2026.5
+scikit-learn==1.8.0
+scipy==1.18.1
+six==1.17.0
+threadpoolctl==3.7.0
+tzdata==2026.5

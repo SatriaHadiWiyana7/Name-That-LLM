@@ -1,0 +1,8 @@
+{
+  "name": "tfidf_word_char_logreg_v1",
+  "random_seed": 42,
+  "n_splits": 5,
+  "word": {"ngram_range": [1, 2], "min_df": 2, "max_features": 25000, "sublinear_tf": true, "lowercase": true},
+  "char": {"analyzer": "char", "ngram_range": [3, 5], "min_df": 2, "max_features": 60000, "sublinear_tf": true, "lowercase": false},
+  "classifier": {"C": 3.0, "max_iter": 1200, "class_weight": "balanced"}
+}
